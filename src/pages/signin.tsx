@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Typography from '@material-ui/core/Typography';
 import use100vh from '~libs/hooks/100vh';
 import useStyles from '~pages/signin-style';
@@ -10,6 +11,9 @@ function SignIn() {
 
     return (
         <div style={{ height }} className={classes.sigInPage}>
+            <Head>
+                <title>Sign In to Inamen | Inamen</title>
+            </Head>
             <div className={classes.signUp}>
                 <Typography variant="body2">New to inamen?&nbsp;</Typography>
                 <Link href="/signup">Create an accounta</Link>

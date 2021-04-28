@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import VisibilityIcon from '@material-ui/icons/Visibility';
+import Head from 'next/head';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import Link from '~components/common/Link';
 import use100vh from '~libs/hooks/100vh';
@@ -26,6 +27,9 @@ function SignIn() {
 
     return (
         <div style={{ height }} className={classes.sigInPage}>
+            <Head>
+                <title>Join Inamen | Inamen</title>
+            </Head>
             <div className={classes.signIn}>
                 <Typography variant="body2">Already have an account?&nbsp;</Typography>
                 <Link href="/signin">Sign in</Link>

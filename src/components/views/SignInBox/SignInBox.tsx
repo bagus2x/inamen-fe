@@ -27,7 +27,6 @@ const SignInBox = () => {
             <Typography variant="h1">Sign in to Inamen</Typography>
             <form className={classes.form}>
                 <TextField
-                    InputLabelProps={{ shrink: true }}
                     InputProps={{ disableUnderline: true }}
                     size="small"
                     label="Username or email"
@@ -37,7 +36,6 @@ const SignInBox = () => {
                 />
                 <div className={classes.passwordField}>
                     <TextField
-                        InputLabelProps={{ shrink: true }}
                         size="small"
                         label="Password"
                         type={showPassword ? 'text' : 'password'}

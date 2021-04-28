@@ -1,3 +1,4 @@
+import { grey } from '@material-ui/core/colors';
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
@@ -28,7 +29,7 @@ const theme = createMuiTheme({
                     border: 0
                 },
                 body: {
-                    backgroundColor: '#fff'
+                    backgroundColor: grey[50]
                 }
             }
         },
@@ -44,7 +45,8 @@ const theme = createMuiTheme({
         },
         MuiLink: {
             root: {
-                userSelect: 'none'
+                userSelect: 'none',
+                cursor: 'pointer'
             }
         }
     }

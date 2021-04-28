@@ -74,10 +74,10 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         '@keyframes shake': {
             '0%': {
-                transform: 'rotate(-5deg) scale(95%)'
+                transform: 'rotate(-1deg) scale(95%)'
             },
             '100%': {
-                transform: 'rotate(5deg) scale(92%)'
+                transform: 'rotate(1deg) scale(92%)'
             }
         }
     })

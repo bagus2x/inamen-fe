@@ -1,4 +1,4 @@
-import Navigations from '~components/layouts/Navigations';
+import App from '~components/layouts/App';
 
 function Browse() {
     return (
@@ -152,6 +152,6 @@ function Browse() {
     );
 }
 
-Browse.XLayout = Navigations;
+Browse.XLayout = App;
 
 export default Browse;
