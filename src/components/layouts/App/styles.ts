@@ -14,6 +14,32 @@ const useStyles = makeStyles((theme: Theme) =>
                 paddingRight: theme.spacing(1.5)
             }
         },
+        toolbarLeft: {
+            flexGrow: 1,
+            display: 'flex',
+            justifyContent: 'flex-start',
+            '& > *:not(:last-child)': {
+                marginRight: theme.spacing(3)
+            }
+        },
+        toolbarCenter: {
+            flexGrow: 1,
+            display: 'flex',
+            justifyContent: 'flex-start'
+        },
+        toolbarRight: {
+            flexGrow: 1,
+            display: 'flex',
+            justifyContent: 'flex-end',
+            '& > *:not(:last-child)': {
+                marginRight: theme.spacing(3)
+            },
+            [theme.breakpoints.down('sm')]: {
+                '& > *:not(:last-child)': {
+                    marginRight: theme.spacing(2)
+                }
+            }
+        },
         sideNavbar: {
             display: 'flex',
             flexDirection: 'column',
@@ -51,17 +77,6 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         grow: {
             flexGrow: 1
-        },
-        iconMenuWrapper: {
-            display: 'flex',
-            '& > *:not(:last-child)': {
-                marginRight: theme.spacing(3)
-            },
-            [theme.breakpoints.down('sm')]: {
-                '& > *:not(:last-child)': {
-                    marginRight: theme.spacing(2)
-                }
-            }
         }
     })
 );

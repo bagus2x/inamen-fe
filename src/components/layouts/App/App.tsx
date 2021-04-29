@@ -20,6 +20,8 @@ import use100vh from '~libs/hooks/100vh';
 import useStyles from '~components/layouts/App/styles';
 import DenseToolbar from '~components/common/DenseToolbar';
 import Link from '~components/common/Link';
+import SearchInput from '~components/views/SearchInput';
+import SearchIcon from '@material-ui/icons/Search';
 
 const App: React.FC = ({ children }) => {
     const classes = useStyles();
@@ -27,6 +29,7 @@ const App: React.FC = ({ children }) => {
     const isSmallDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
     const [sidenavShrink, setSidenavShrink] = useState(false);
     const [anchorAccount, setAnchorAccount] = useState<null | HTMLElement>(null);
+    const [visibleMobileSearch, setVisibleMobileSearch] = useState(false);
 
     useEffect(() => {
         const id = setTimeout(() => {
@@ -43,28 +46,50 @@ const App: React.FC = ({ children }) => {
         setSidenavShrink(!sidenavShrink);
     };
 
-    const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorAccount(event.currentTarget);
+    const handleProfileMenuOpen = (ev: React.MouseEvent<HTMLElement>) => {
+        setAnchorAccount(ev.currentTarget);
     };
 
     const handleMenuClose = () => {
         setAnchorAccount(null);
     };
 
+    const handleVisibleMobileSearch = () => {
+        setVisibleMobileSearch(true);
+    };
+
+    const handleInvsibleMobileSearch = () => {
+        setVisibleMobileSearch(false);
+    };
+
     return (
         <div className={classes.root} style={{ height }}>
             <AppBar color="inherit" elevation={1}>
                 <DenseToolbar>
+                    <div className={classes.toolbarLeft}>
+                        <Hidden smDown>
+                            <NavbarTitle />
+                        </Hidden>
+                        <Hidden mdUp>
+                            <IconButton size="small" color="primary" edge="start" onClick={handleSidenavShrink}>
+                                <MenuIcon />
+                            </IconButton>
+                        </Hidden>
+                        <Hidden mdUp>
+                            <IconButton size="small" color="primary" edge="start" onClick={handleVisibleMobileSearch}>
+                                <SearchIcon />
+                            </IconButton>
+                        </Hidden>
+                    </div>
                     <Hidden smDown>
-                        <NavbarTitle />
+                        <div className={classes.toolbarCenter}>
+                            <SearchInput />
+                        </div>
                     </Hidden>
                     <Hidden mdUp>
-                        <IconButton size="small" color="primary" edge="start" onClick={handleSidenavShrink}>
-                            <MenuIcon />
-                        </IconButton>
+                        {visibleMobileSearch && <SearchInput mobile onInactive={handleInvsibleMobileSearch} />}
                     </Hidden>
-                    <div className={classes.grow}></div>
-                    <div className={classes.iconMenuWrapper}>
+                    <div className={classes.toolbarRight}>
                         <IconButton size="small" color="primary" component={Link} href="/studio">
                             <AddIcon />
                         </IconButton>

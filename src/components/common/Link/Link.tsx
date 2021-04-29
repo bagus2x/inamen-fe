@@ -1,14 +1,17 @@
 import NextLink, { LinkProps as DefaultNextLinkProps } from 'next/link';
 import MuiLink, { LinkProps as DefaultMuiLinkProps } from '@material-ui/core/Link';
+import { ForwardedRef, forwardRef } from 'react';
 
 type LinkProps = DefaultMuiLinkProps & DefaultNextLinkProps;
 
-const Link: React.FC<LinkProps> = ({ children, href, ...rest }) => {
+const Link = forwardRef(({ children, href, ...rest }: LinkProps, ref: ForwardedRef<HTMLAnchorElement>) => {
     return (
         <NextLink href={href}>
-            <MuiLink {...rest}>{children}</MuiLink>
+            <MuiLink ref={ref} {...rest}>
+                {children}
+            </MuiLink>
         </NextLink>
     );
-};
+});
 
 export default Link;
