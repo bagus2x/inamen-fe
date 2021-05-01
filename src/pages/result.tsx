@@ -9,7 +9,7 @@ function Result() {
     return (
         <div>
             <Head>
-                <title>{search_query || '-'} | Inamen</title>
+                <title>{search_query ? decodeURIComponent(search_query as string) : '-'} | Inamen</title>
             </Head>
             {search_query ? decodeURIComponent(search_query as string) : 'Tidak ditemukan'}
         </div>

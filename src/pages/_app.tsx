@@ -5,6 +5,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '~libs/theme';
 import Progress from '~components/common/Progress';
+import wrapper from '~redux/store';
 
 interface InamenAppProps extends AppProps {
     Component: ComponentType<{}> & {
@@ -43,4 +44,4 @@ function InamenApp({ Component, pageProps }: InamenAppProps) {
     );
 }
 
-export default InamenApp;
+export default wrapper.withRedux(InamenApp);
