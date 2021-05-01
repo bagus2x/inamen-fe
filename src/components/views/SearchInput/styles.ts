@@ -1,4 +1,4 @@
-import { createStyles, makeStyles, Theme, fade } from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -9,8 +9,7 @@ const useStyles = makeStyles((theme: Theme) =>
             width: '100%',
             maxWidth: 500,
             position: 'relative',
-            padding: theme.spacing(0, 1, 0, 1),
-            transition: 'all 1s ease-in'
+            padding: theme.spacing(0, 1, 0, 1)
         },
         mobileSearch: {
             position: 'absolute',
@@ -56,8 +55,7 @@ const useStyles = makeStyles((theme: Theme) =>
             background: theme.palette.grey[100],
             padding: theme.spacing(0, 1),
             borderRadius: theme.spacing(0, 1, 1, 0),
-            color: theme.palette.grey[400],
-            border: 'none'
+            color: theme.palette.grey[400]
         },
         searchIconActive: {
             cursor: 'pointer'
@@ -77,6 +75,7 @@ const useStyles = makeStyles((theme: Theme) =>
             alignItems: 'center',
             padding: theme.spacing(1, 0.5),
             borderRadius: theme.spacing(1),
+            textDecoration: 'none !important',
             width: '100%',
             '&:hover': {
                 background: theme.palette.grey[100]
@@ -88,6 +87,7 @@ const useStyles = makeStyles((theme: Theme) =>
             padding: theme.spacing(1, 0.5),
             borderRadius: theme.spacing(1),
             width: '100%',
+            textDecoration: 'none !important',
             cursor: 'pointer',
             '&:hover': {
                 background: theme.palette.grey[100]
