@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, combineReducers, AnyAction } from 'redux'
 import { HYDRATE, createWrapper, MakeStore } from 'next-redux-wrapper';
 import thunk from 'redux-thunk';
 import { MODE } from '~libs/global-var';
+import userReducer, { initialState as userInitialState } from '~redux/user/reducer';
 
 const middlewares = [thunk];
 
@@ -15,9 +16,13 @@ const bindMiddleware = (middleware: Middlewares) => {
     return applyMiddleware(...middleware);
 };
 
-const combinedReducer = combineReducers({});
+const combinedReducer = combineReducers({
+    user: userReducer
+});
 
-const initialState = {};
+const initialState = {
+    user: userInitialState
+};
 
 export type StoreState = typeof initialState;
 

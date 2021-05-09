@@ -5,16 +5,9 @@ const useStyles = makeStyles((theme: Theme) =>
         landingPage: {
             '& > section': {
                 marginTop: theme.spacing(4)
-            }
-        },
-        title: {
-            flexGrow: 1,
-            display: 'flex',
-            userSelect: 'none',
-            '& > span': {
-                fontSize: theme.typography.h5.fontSize,
-                marginLeft: theme.spacing(2)
-            }
+            },
+            minHeight: '100vh',
+            background: '#fff'
         },
         mixinDenseToolbar: {
             minHeight: 48
@@ -41,12 +34,8 @@ const useStyles = makeStyles((theme: Theme) =>
             alignItems: 'center',
             flexDirection: 'column',
             '& > h1': {
-                ...theme.typography.h4,
                 color: '#fff',
-                [theme.breakpoints.down('sm')]: {
-                    ...theme.typography.h5,
-                    textAlign: 'center'
-                },
+                fontWeight: '400',
                 [theme.breakpoints.down('xs')]: {
                     fontSize: '1rem',
                     textAlign: 'center'

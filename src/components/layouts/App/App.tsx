@@ -14,6 +14,7 @@ import VideoGameIcon from '@material-ui/icons/VideogameAssetRounded';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import SearchIcon from '@material-ui/icons/Search';
 import clsx from 'clsx';
 import NavbarTitle from '~components/views/NavbarTitle';
 import use100vh from '~libs/hooks/100vh';
@@ -21,7 +22,6 @@ import useStyles from '~components/layouts/App/styles';
 import DenseToolbar from '~components/common/DenseToolbar';
 import Link from '~components/common/Link';
 import SearchInput from '~components/views/SearchInput';
-import SearchIcon from '@material-ui/icons/Search';
 
 const App: React.FC = ({ children }) => {
     const classes = useStyles();

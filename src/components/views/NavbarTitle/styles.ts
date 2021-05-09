@@ -7,8 +7,9 @@ const useStyles = makeStyles((theme: Theme) =>
             alignItems: 'center',
             userSelect: 'none',
             cursor: 'pointer',
-            '& > span': {
-                fontSize: theme.typography.h5.fontSize,
+            '& > h1': {
+                fontSize: '1.5em !important',
+                fontWeight: 400,
                 marginRight: theme.spacing(2)
             }
         }

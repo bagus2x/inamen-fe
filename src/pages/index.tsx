@@ -22,13 +22,13 @@ function LandingPage() {
                         </Button>
                     </div>
                     <div className={classes.image}>
-                        <Image src="/console.svg" height={500} width={500} />
+                        <Image src="/assets/landing-page-image/console.svg" height={500} width={500} />
                     </div>
                 </Container>
             </main>
             <section>
                 <Container>
-                    <Typography align="center" variant="h3">
+                    <Typography align="center" variant="h1">
                         Why Inamen?
                     </Typography>
                     <Typography align="center" variant="body1">

@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme: Theme) =>
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            paddingTop: theme.spacing(1),
+            paddingTop: theme.spacing(2),
             background: theme.palette.background.paper,
             height: `calc(100vh - 48px)`,
             width: 48,
@@ -63,7 +63,6 @@ const useStyles = makeStyles((theme: Theme) =>
         content: {
             marginTop: 48,
             marginLeft: 48,
-            background: theme.palette.grey[50],
             transition: theme.transitions.create('margin', {
                 duration: theme.transitions.duration.short,
                 easing: theme.transitions.easing.easeIn

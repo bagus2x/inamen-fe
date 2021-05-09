@@ -8,7 +8,7 @@ import DenseToolbar from '~components/common/DenseToolbar';
 import SignInBox from '~components/views/SignInBox';
 import useStyles from '~components/views/Navbar/styles';
 import NavbarTitle from '~components/views/NavbarTitle/NavbarTitle';
-import  Hidden  from '@material-ui/core/Hidden';
+import Hidden from '@material-ui/core/Hidden';
 
 const Navbar = () => {
     const classes = useStyles();

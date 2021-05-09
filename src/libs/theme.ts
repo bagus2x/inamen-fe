@@ -17,6 +17,30 @@ const theme = createMuiTheme({
     typography: {
         button: {
             textTransform: 'none'
+        },
+        h1: {
+            fontSize: '2em',
+            fontWeight: 500
+        },
+        h2: {
+            fontSize: '1.5em',
+            fontWeight: 400
+        },
+        h3: {
+            fontSize: '1.17em',
+            fontWeight: 400
+        },
+        h4: {
+            fontSize: '1.12em',
+            fontWeight: 300
+        },
+        h5: {
+            fontSize: '0.83em',
+            fontWeight: 300
+        },
+        h6: {
+            fontSize: '0.75em',
+            fontWeight: 300
         }
     },
     overrides: {
@@ -27,9 +51,6 @@ const theme = createMuiTheme({
                 },
                 '::-moz-focus-inner': {
                     border: 0
-                },
-                body: {
-                    backgroundColor: grey[50]
                 }
             }
         },

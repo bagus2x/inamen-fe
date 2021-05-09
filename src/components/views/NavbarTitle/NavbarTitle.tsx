@@ -8,8 +8,8 @@ const NavbarTitle = () => {
 
     return (
         <div className={classes.title} onClick={() => Router.push('/')}>
-            <Image src="/logo.svg" alt="Inamen" width={30} height={30} />
-            <Typography variant="inherit">Inamen</Typography>
+            <Image src="/assets/logo/logo.svg" alt="Inamen" width={30} height={30} />
+            <Typography variant="h1">INAMEN</Typography>
         </div>
     );
 };

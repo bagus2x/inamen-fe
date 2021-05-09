@@ -4,9 +4,9 @@ import { ForwardedRef, forwardRef } from 'react';
 
 type LinkProps = DefaultMuiLinkProps & DefaultNextLinkProps;
 
-const Link = forwardRef(({ children, href, ...rest }: LinkProps, ref: ForwardedRef<HTMLAnchorElement>) => {
+const Link = forwardRef(({ children, href, passHref, ...rest }: LinkProps, ref: ForwardedRef<HTMLAnchorElement>) => {
     return (
-        <NextLink href={href}>
+        <NextLink href={href} passHref={passHref}>
             <MuiLink ref={ref} {...rest}>
                 {children}
             </MuiLink>
