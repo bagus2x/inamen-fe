@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { GetStaticProps } from 'next';
+import axios from 'axios';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
@@ -8,6 +9,7 @@ import useStyles from '~pages/browse-style';
 import GameCard from '~components/views/GameCard';
 
 interface Game {
+    id: number;
     image: string;
     title: string;
     participantsNumber: number;
@@ -83,6 +85,7 @@ function Browse({ games }: BrowseProps) {
                                     title={game.title}
                                     key={key}
                                     participantsNumber={game.participantsNumber}
+                                    href={`/games/${game.id}`}
                                 />
                             ))}
                         </div>
@@ -102,6 +105,7 @@ function Browse({ games }: BrowseProps) {
                                     title={game.title}
                                     key={key}
                                     participantsNumber={game.participantsNumber}
+                                    href={`/games/${game.id}`}
                                 />
                             ))}
                         </div>
@@ -113,52 +117,9 @@ function Browse({ games }: BrowseProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-    const games = [
-        {
-            image: '/assets/game-cover/apex.jpg',
-            title: 'Apex Legends',
-            participantsNumber: 201122,
-            genres: ['BATTLE ROYALE', 'FPS']
-        },
-        {
-            image: '/assets/game-cover/pubgm.jpg',
-            title: 'PUBGM',
-            participantsNumber: 192983,
-            genres: ['BATTLE ROYALE']
-        },
-        {
-            image: '/assets/game-cover/fortnite.jpg',
-            title: 'Fortnite',
-            participantsNumber: 283722,
-            genres: ['BATTLE ROYALE']
-        },
-        {
-            image: '/assets/game-cover/dota2.jpg',
-            title: 'Dota 2',
-            participantsNumber: 3212121,
-            genres: ['MOBA']
-        },
-        {
-            image: '/assets/game-cover/hago.jpg',
-            title: 'Hago',
-            participantsNumber: 121212,
-            genres: ['SPORT']
-        },
-        {
-            image: '/assets/game-cover/fifa21.jpg',
-            title: 'FIFA 21',
-            participantsNumber: 1212,
-            genres: ['SPORT']
-        },
-        {
-            image: '/assets/game-cover/lol.jpg',
-            title: 'League of Legends',
-            participantsNumber: 919219,
-            genres: ['MOBA']
-        }
-    ];
+    const res = await axios.get('http://localhost:3000/api/games');
     return {
-        props: { games },
+        props: { games: res.data.data },
         revalidate: 60 * 60
     };
 };

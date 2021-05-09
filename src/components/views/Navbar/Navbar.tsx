@@ -21,9 +21,9 @@ const Navbar = () => {
                     <Hidden smDown>
                         <NavbarTitle />
                     </Hidden>
-                    <NextLink href="/browse">
+                    <NextLink href="/games">
                         <Button component="a" variant="text">
-                            Browse
+                            Games
                         </Button>
                     </NextLink>
                     <Box flexGrow={1} />

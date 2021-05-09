@@ -10,16 +10,17 @@ interface GameCardProps {
     image: string;
     title: string;
     participantsNumber: number;
+    href: string;
     delay?: string;
 }
 
-const GameCard = ({ image, title, participantsNumber, delay }: GameCardProps) => {
+const GameCard = ({ image, title, participantsNumber, href, delay }: GameCardProps) => {
     const classes = useStyles();
 
     return (
         <Fade in={true} style={{ transitionDelay: delay }}>
             <div className={classes.gameCard}>
-                <Link href="#" className={classes.imageLink} passHref>
+                <Link href={href} className={classes.imageLink} passHref>
                     <Image
                         className={classes.image}
                         layout="responsive"
@@ -29,7 +30,7 @@ const GameCard = ({ image, title, participantsNumber, delay }: GameCardProps) =>
                         src={image}
                     />
                 </Link>
-                <Link href="#" className={classes.title}>
+                <Link href={href} className={classes.title}>
                     {title}
                 </Link>
                 <div className={classes.participantsNumber}>

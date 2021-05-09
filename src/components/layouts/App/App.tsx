@@ -1,4 +1,4 @@
-import React, { useEffect, useState, MouseEvent } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Hidden from '@material-ui/core/Hidden';
@@ -8,9 +8,9 @@ import MenuIcon from '@material-ui/icons/MenuRounded';
 import AddIcon from '@material-ui/icons/AddRounded';
 import NotifIcon from '@material-ui/icons/NotificationsRounded';
 import AccountCircleIcon from '@material-ui/icons/AccountCircleRounded';
-import NavigationIcon from '@material-ui/icons/NavigationRounded';
+import CollectionsIcon from '@material-ui/icons/ViewWeekRounded';
 import HistoryIcon from '@material-ui/icons/HistoryRounded';
-import VideoGameIcon from '@material-ui/icons/VideogameAssetRounded';
+import GameIcon from '@material-ui/icons/SportsEsportsRounded';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
@@ -115,19 +115,19 @@ const App: React.FC = ({ children }) => {
                 </DenseToolbar>
             </AppBar>
             <nav className={clsx(classes.sideNavbar, { [classes.sidenavShrink]: sidenavShrink })}>
-                <IconButton size="small" color="primary" component={Link} href="/browse">
-                    <Tooltip enterDelay={1000} arrow placement="right" title="Browse">
-                        <NavigationIcon />
+                <IconButton size="small" color="primary" component={Link} href="/games">
+                    <Tooltip enterDelay={1000} arrow placement="right" title="Games">
+                        <GameIcon />
+                    </Tooltip>
+                </IconButton>
+                <IconButton size="small" color="primary" component={Link} href="/matches">
+                    <Tooltip enterDelay={1000} arrow placement="right" title="My matches">
+                        <CollectionsIcon />
                     </Tooltip>
                 </IconButton>
                 <IconButton size="small" color="primary" component={Link} href="/history">
                     <Tooltip enterDelay={1000} arrow placement="right" title="History">
                         <HistoryIcon />
-                    </Tooltip>
-                </IconButton>
-                <IconButton size="small" color="primary" component={Link} href="/matches">
-                    <Tooltip enterDelay={1000} arrow placement="right" title="My matches">
-                        <VideoGameIcon />
                     </Tooltip>
                 </IconButton>
             </nav>

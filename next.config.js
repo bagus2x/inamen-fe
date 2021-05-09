@@ -1,5 +1,5 @@
 module.exports = {
-    pageExtensions: ['tsx'],
+    pageExtensions: ['tsx', 'ts'],
     env: {
         APP_NAME: 'INAMEN',
         API_DEV: 'http://localhost:8080',
