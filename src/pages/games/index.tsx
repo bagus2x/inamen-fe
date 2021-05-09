@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import App from '~components/layouts/App';
 import useStyles from '~pages/browse-style';
 import GameCard from '~components/views/GameCard';
+import { FE_HOST } from '~libs/global-var';
 
 interface Game {
     id: number;
@@ -117,7 +118,7 @@ function Browse({ games }: BrowseProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-    const res = await axios.get('http://localhost:3000/api/games');
+    const res = await axios.get(`${FE_HOST}/api/games`);
     return {
         props: { games: res.data.data },
         revalidate: 60 * 60
