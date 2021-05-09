@@ -78,6 +78,7 @@ function Browse({ games }: BrowseProps) {
                         <div className={classes.gameCardWrapper}>
                             {games.map((game, key) => (
                                 <GameCard
+                                    delay={`${key * 100}ms`}
                                     image={game.image}
                                     title={game.title}
                                     key={key}
@@ -96,6 +97,7 @@ function Browse({ games }: BrowseProps) {
                         <div className={classes.gameCardWrapper}>
                             {filteredGames.map((game, key) => (
                                 <GameCard
+                                    delay={`${key * 100}ms`}
                                     image={game.image}
                                     title={game.title}
                                     key={key}

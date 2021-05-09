@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) =>
             justifyContent: 'flex-end',
             alignItems: 'center',
             width: '100%',
-            padding: `${theme.spacing(2)}px ${theme.spacing(2)}px ${theme.spacing(5)}px`,
+            padding: theme.spacing(2, 2, 5),
             color: '#fff',
             '& a': {
                 color: theme.palette.secondary.main,
