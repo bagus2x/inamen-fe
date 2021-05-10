@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Typography from '@material-ui/core/Typography';
 import use100vh from '~libs/hooks/100vh';
-import useStyles from '~pages/signin-style';
+import useStyles from '~styles/signin-style';
 import SignInBox from '~components/views/SignInBox';
 import Link from '~components/common/Link';
 

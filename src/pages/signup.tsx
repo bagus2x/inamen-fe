@@ -13,7 +13,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import Link from '~components/common/Link';
 import use100vh from '~libs/hooks/100vh';
-import useStyles from '~pages/signup-style';
+import useStyles from '~styles/signup-style';
 import { signUp } from '~redux/user/actions';
 import useUser from '~libs/hooks/use-user';
 import Rules from '~libs/signup-rules';

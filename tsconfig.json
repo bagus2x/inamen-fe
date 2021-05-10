@@ -11,7 +11,7 @@
       "~libs/*": ["src/libs/*"],
       "~components/*": ["src/components/*"],
       "~redux/*": ["src/redux/*"],
-      "~pages/*": ["src/pages/*.ts"]
+      "~styles/*": ["src/styles/*.ts"]
     },
     "allowJs": true,
     "skipLibCheck": true,

@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
-import useStyles from '~pages/index-style';
+import useStyles from '~styles/index-style';
 import Navbar from '~components/views/Navbar';
 
 function LandingPage() {

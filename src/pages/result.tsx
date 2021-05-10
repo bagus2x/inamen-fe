@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-import useStyles from '~pages/result-style';
+import useStyles from '~styles/result-style';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';

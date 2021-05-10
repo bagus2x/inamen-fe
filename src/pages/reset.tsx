@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
-import useStyles from '~pages/reset-style';
+import useStyles from '~styles/reset-style';
 import Navbar from '~components/views/Navbar';
 
 function reset() {
@@ -14,7 +14,7 @@ function reset() {
             <Navbar />
             <Container maxWidth="sm" className={classes.container}>
                 <div className={classes.title}>
-                    <Image src="/logo.svg" width={100} height={100} />
+                    <Image src="/logo/logo.svg" width={100} height={100} />
                     <Typography variant="h1">Reset your password</Typography>
                 </div>
                 <form className={classes.form}>
