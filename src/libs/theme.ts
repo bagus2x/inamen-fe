@@ -24,15 +24,15 @@ const theme = createMuiTheme({
         },
         h2: {
             fontSize: '1.5em',
-            fontWeight: 400
+            fontWeight: 500
         },
         h3: {
             fontSize: '1.17em',
-            fontWeight: 400
+            fontWeight: 500
         },
         h4: {
             fontSize: '1.12em',
-            fontWeight: 300
+            fontWeight: 400
         },
         h5: {
             fontSize: '0.83em',

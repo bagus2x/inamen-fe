@@ -9,12 +9,12 @@ import abbreviateNumber from '~libs/abbreviate-number';
 interface GameCardProps {
     image: string;
     title: string;
-    participantsNumber: number;
+    numberOfParticipants: number;
     href: string;
     delay?: string;
 }
 
-const GameCard = ({ image, title, participantsNumber, href, delay }: GameCardProps) => {
+const GameCard = ({ image, title, numberOfParticipants, href, delay }: GameCardProps) => {
     const classes = useStyles();
 
     return (
@@ -33,9 +33,9 @@ const GameCard = ({ image, title, participantsNumber, href, delay }: GameCardPro
                 <Link href={href} className={classes.title}>
                     {title}
                 </Link>
-                <div className={classes.participantsNumber}>
+                <div className={classes.numberOfParticipants}>
                     <FlagIcon fontSize="small" />
-                    <Typography variant="caption">{abbreviateNumber(participantsNumber)} participants</Typography>
+                    <Typography variant="caption">{abbreviateNumber(numberOfParticipants)} participants</Typography>
                 </div>
             </div>
         </Fade>

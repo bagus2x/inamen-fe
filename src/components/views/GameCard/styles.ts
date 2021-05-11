@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) =>
                 color: theme.palette.secondary.main
             }
         },
-        participantsNumber: {
+        numberOfParticipants: {
             display: 'flex',
             alignItems: 'center',
             color: theme.palette.success.light

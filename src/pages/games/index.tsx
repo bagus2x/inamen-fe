@@ -13,7 +13,7 @@ interface Game {
     id: number;
     image: string;
     title: string;
-    participantsNumber: number;
+    numberOfParticipants: number;
     genres: Array<string>;
 }
 
@@ -85,7 +85,7 @@ function Browse({ games }: BrowseProps) {
                                     image={game.image}
                                     title={game.title}
                                     key={key}
-                                    participantsNumber={game.participantsNumber}
+                                    numberOfParticipants={game.numberOfParticipants}
                                     href={`/games/${game.id}`}
                                 />
                             ))}
@@ -105,7 +105,7 @@ function Browse({ games }: BrowseProps) {
                                     image={game.image}
                                     title={game.title}
                                     key={key}
-                                    participantsNumber={game.participantsNumber}
+                                    numberOfParticipants={game.numberOfParticipants}
                                     href={`/games/${game.id}`}
                                 />
                             ))}

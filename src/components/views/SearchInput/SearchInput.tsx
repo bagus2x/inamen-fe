@@ -42,7 +42,7 @@ function SearchInput({ mobile, onActive, onInactive }: SearchInput) {
     const handleSubmit = (ev: FormEvent) => {
         ev.preventDefault();
         router.push({
-            pathname: 'result',
+            pathname: '/result',
             query: {
                 search_query: encodeURIComponent(text)
             }
