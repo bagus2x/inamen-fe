@@ -1,18 +1,26 @@
-import React, { useState } from 'react';
-import Image from 'next/image';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import App from '~components/layouts/App';
 import games from '~libs/dummy/games';
 import useStyles from '~styles/game-detail-style';
-import { Button, Container, Typography } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
+import { Theme } from '@material-ui/core/styles';
+import FavoriteIcon from '@material-ui/icons/FavoriteBorder';
+import Box from '@material-ui/core/Box';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import FlagIcon from '@material-ui/icons/Flag';
+import Typography from '@material-ui/core/Typography';
+import Hidden from '@material-ui/core/Hidden';
 import abbreviateNumber from '~libs/abbreviate-number';
 import truncateWords from '~libs/truncate-words';
 import ListTournaments from '~components/views/ListTournaments';
+import Tag from '~components/common/Tag';
 
 interface Game {
     id: number;
     image: string;
+    background: string;
     title: string;
     description: string;
     numberOfParticipants: number;
@@ -24,10 +32,16 @@ interface GameDetailProps {
 }
 
 function GameDetail({ game }: GameDetailProps) {
-    const classes = useStyles();
+    const classes = useStyles({ background: game.background });
     const [truncate, setTruncate] = useState(false);
+    const isSmallDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
 
     const description = truncate ? truncateWords(game.description, 200) : game.description;
+
+    useEffect(() => {
+        if (isSmallDown) setTruncate(true);
+        else setTruncate(false);
+    }, [isSmallDown]);
 
     const handleTruncate = () => {
         setTruncate(!truncate);
@@ -35,16 +49,22 @@ function GameDetail({ game }: GameDetailProps) {
 
     return (
         <div>
-            <div className={classes.header}>
-                <Container maxWidth="lg" className={classes.headerContainer}>
+            <div className={classes.banner}>
+                <div className={classes.bannerBackground} />
+                <Container maxWidth="lg" className={classes.bannerContainer}>
                     <Typography variant="h1">{game.title}</Typography>
                     <div className={classes.partiGenre}>
-                        <Typography variant="h3">{abbreviateNumber(game.numberOfParticipants)} Participants</Typography>
+                        <span>
+                            <FlagIcon color="primary" fontSize="small" />
+                            <Typography variant="caption">
+                                {abbreviateNumber(game.numberOfParticipants)} Participants
+                            </Typography>
+                        </span>
                         <span>
                             {game.genres.map((genre, key) => (
-                                <Button disableElevation key={key} size="small" variant="contained" color="inherit">
+                                <Tag disableElevation key={key} size="small" variant="outlined" color="primary">
                                     {genre}
-                                </Button>
+                                </Tag>
                             ))}
                         </span>
                     </div>
@@ -52,16 +72,34 @@ function GameDetail({ game }: GameDetailProps) {
                         <Typography variant="body2" color="textSecondary">
                             {description}
                         </Typography>
-                        <Typography color="secondary" variant="body2" onClick={handleTruncate}>
-                            {truncate ? 'More' : 'Less'}
-                        </Typography>
+                        <Hidden mdUp>
+                            <Typography
+                                color="secondary"
+                                variant="body2"
+                                onClick={handleTruncate}
+                                className={classes.btnTruncate}
+                            >
+                                {truncate ? 'More' : 'Less'}
+                            </Typography>
+                        </Hidden>
                     </span>
-                </Container>
-                <Container maxWidth="lg">
-                    <Typography variant="h3">Recomended Tournaments</Typography>
-                    <ListTournaments />
+                    <Box mt={2}>
+                        <Button
+                            startIcon={<FavoriteIcon />}
+                            variant="contained"
+                            size="small"
+                            color="secondary"
+                            disableElevation
+                        >
+                            Follow
+                        </Button>
+                    </Box>
                 </Container>
             </div>
+            <Container maxWidth="lg">
+                <Typography variant="h3">Recomended Tournaments</Typography>
+                <ListTournaments />
+            </Container>
         </div>
     );
 }

@@ -2,14 +2,25 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        header: {
+        banner: {
+            position: 'relative',
             width: '100%',
             '& > *': {
                 marginBottom: theme.spacing(3)
             }
         },
-        headerContainer: {
-            paddingTop: theme.spacing(2),
+        bannerBackground: {
+            position: 'absolute',
+            backgroundImage: (props: { background: string }) => `url(${props.background})`,
+            width: '100%',
+            height: 250,
+            backgroundPosition: 'right 0 center',
+            zIndex: 1
+        },
+        bannerContainer: {
+            position: 'relative',
+            zIndex: 2,
+            padding: theme.spacing(2),
             display: 'flex',
             flexDirection: 'column'
         },
@@ -17,12 +28,14 @@ const useStyles = makeStyles((theme: Theme) =>
             display: 'flex',
             gap: theme.spacing(2),
             margin: theme.spacing(0, 0, 1),
+            '& > *:first-child': {
+                display: 'flex',
+                justifiyContent: 'center',
+                alignItems: 'center'
+            },
             '& > *:last-child': {
                 display: 'flex',
-                gap: theme.spacing(0.5),
-                '& > button': {
-                    padding: theme.spacing(0, 1)
-                }
+                gap: theme.spacing(0.5)
             },
             [theme.breakpoints.down('sm')]: {
                 flexDirection: 'column'
@@ -33,10 +46,10 @@ const useStyles = makeStyles((theme: Theme) =>
                 fontSize: '.85em',
                 display: 'inline',
                 textAlign: 'justify'
-            },
-            '& > :last-child': {
-                cursor: 'pointer'
             }
+        },
+        btnTruncate: {
+            cursor: 'pointer'
         }
     })
 );
