@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import InfoRoundedIcon from '@material-ui/icons/InfoRounded';
 import IconButton from '@material-ui/core/IconButton';
 import useStyles from '~components/views/TeamParticipant/styles';
-import TeamParticipantDialog from '../TeamParticipantDialog/TeamParticipantDIalog';
+import TeamParticipantDialog from '~components/views/TeamParticipantDialog/TeamParticipantDialog';
 
 const TeamParticipant = () => {
     const classes = useStyles();
