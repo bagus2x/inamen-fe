@@ -2,6 +2,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
+        tournament: {},
         banner: {
             display: 'flex',
             flexDirection: 'row'
@@ -12,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) =>
             display: 'flex',
             flexDirection: 'row',
             gap: theme.spacing(2),
-            [theme.breakpoints.down('xs')]: {
+            [theme.breakpoints.down('sm')]: {
                 alignItems: 'flex-start',
                 flexDirection: 'column'
             }
@@ -30,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
         imageWrapper: {
             display: 'grid',
             placeItems: 'center',
-            [theme.breakpoints.down('xs')]: {
+            [theme.breakpoints.down('sm')]: {
                 alignSelf: 'center'
             }
         },
@@ -42,6 +43,18 @@ const useStyles = makeStyles((theme: Theme) =>
         platform: {
             display: 'flex',
             gap: theme.spacing(1)
+        },
+        content: {
+            paddingTop: theme.spacing(1.5)
+        },
+        btnChat: {
+            position: 'fixed',
+            right: theme.spacing(3),
+            bottom: theme.spacing(3),
+            [theme.breakpoints.down('sm')]: {
+                right: theme.spacing(1.5),
+                bottom: theme.spacing(1.5)
+            }
         }
     })
 );

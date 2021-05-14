@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme: Theme) =>
             pointerEvents: 'none'
         },
         title: {
-            textDecoration: 'none !important',
             marginTop: theme.spacing(1),
             color: 'inherit',
             fontWeight: 500,

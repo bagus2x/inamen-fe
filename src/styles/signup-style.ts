@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme: Theme) =>
             color: '#fff',
             '& a': {
                 color: theme.palette.secondary.main,
-                textDecoration: 'none !important',
                 cursor: 'pointer'
             }
         },

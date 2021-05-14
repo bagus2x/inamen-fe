@@ -23,7 +23,6 @@ const useStyles = makeStyles((theme: Theme) =>
             display: 'flex',
             flexDirection: 'column',
             '& a': {
-                textDecoration: 'none !important',
                 alignSelf: 'flex-end',
                 fontSize: '.75rem',
                 cursor: 'pointer'

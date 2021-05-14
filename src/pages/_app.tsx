@@ -20,7 +20,7 @@ function InamenApp({ Component, pageProps }: InamenAppProps) {
 
     useEffect(() => {
         const jssStyles = document.querySelector('#jss-server-side');
-        if (jssStyles !== null) {
+        if (jssStyles) {
             jssStyles.parentElement!.removeChild(jssStyles);
         }
     }, []);

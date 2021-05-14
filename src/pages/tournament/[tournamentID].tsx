@@ -1,18 +1,53 @@
-import Image from 'next/image';
+import { ChangeEvent, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
+import { Theme } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Fab from '@material-ui/core/Fab';
+import ChatIcon from '@material-ui/icons/ChatRounded';
+import TabPanel from '~components/common/TabPanel/TabPanel';
+import ChatBox from '~components/views/ChatBox';
 import App from '~components/layouts/App';
-import useStyles from '~styles/tournament-style';
 import Tag from '~components/common/Tag';
-import { Button } from '@material-ui/core';
+import useStyles from '~styles/tournament-style';
+
+const TourInfo = dynamic(() => import('~components/views/TourInfo'));
+const TourParticipants = dynamic(() => import('~components/views/TourParticipants'));
+const TourSchedules = dynamic(() => import('~components/views/TourSchedules'));
+const TourStandings = dynamic(() => import('~components/views/TourStandings'));
 
 function TournamentDetail() {
     const router = useRouter();
     const classes = useStyles();
+    const isMdUp = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'));
+    const [chatBox, setChatBox] = useState(false);
+
+    const tabValue = router.query.tab;
+
+    const handleChatOnOpen = () => {
+        setChatBox(true);
+    };
+
+    const handleChatOnCloe = () => {
+        setChatBox(false);
+    };
+
+    const handleTabChange = (_ev: ChangeEvent<{}>, v: string) => {
+        // remove duplicate query string
+        const pathname = router.asPath.substring(0, router.asPath.indexOf('?')) || router.asPath;
+        router.push({
+            pathname,
+            query: { tab: v.toLocaleLowerCase() }
+        });
+    };
 
     return (
-        <div>
+        <div className={classes.tournament}>
             <div className={classes.banner}>
                 <Container maxWidth="lg" className={classes.bannerContainer}>
                     <div className={classes.imageWrapper}>
@@ -39,6 +74,47 @@ function TournamentDetail() {
                     </div>
                 </Container>
             </div>
+            <Container maxWidth="lg">
+                <Tabs
+                    value={tabValue}
+                    indicatorColor="primary"
+                    textColor="primary"
+                    onChange={handleTabChange}
+                    aria-label="tournament tabs"
+                    variant={isMdUp ? 'fullWidth' : 'scrollable'}
+                >
+                    <Tab value="informations" wrapped disableRipple label="Informations" />
+                    <Tab value="participants" wrapped disableRipple label="Participants" />
+                    <Tab value="schedules" wrapped disableRipple label="Schedules" />
+                    <Tab value="standings" wrapped disableRipple label="Standings" />
+                    <Tab value="watch" wrapped disableRipple label="Watch" disabled />
+                    <Tab value="share" wrapped disableRipple label="Share" disabled />
+                </Tabs>
+                <div className={classes.content}>
+                    <TabPanel visible={tabValue === 'informations'}>
+                        <TourInfo />
+                    </TabPanel>
+                    <TabPanel visible={tabValue === 'participants'}>
+                        <TourParticipants />
+                    </TabPanel>
+                    <TabPanel visible={tabValue === 'schedules'}>
+                        <TourSchedules />
+                    </TabPanel>
+                    <TabPanel visible={tabValue === 'standings'}>
+                        <TourStandings />
+                    </TabPanel>
+                </div>
+            </Container>
+            <ChatBox onClose={handleChatOnCloe} onOpen={handleChatOnOpen} open={chatBox} />
+            <Fab
+                size={isMdUp ? 'medium' : 'small'}
+                color="primary"
+                aria-label="chat"
+                className={classes.btnChat}
+                onClick={() => setChatBox(true)}
+            >
+                <ChatIcon fontSize={isMdUp ? 'default' : 'small'} />
+            </Fab>
         </div>
     );
 }

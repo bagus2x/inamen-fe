@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         tournamentDescription: {},
         listItem: {
-            textDecoration: 'none !important',
             color: theme.palette.text.primary,
             paddingRight: `${theme.spacing(7)}px !important`
         },

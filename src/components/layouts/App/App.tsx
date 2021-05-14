@@ -108,8 +108,12 @@ const App: React.FC = ({ children }) => {
                             open={!!anchorAccount}
                             onClose={handleMenuClose}
                         >
-                            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-                            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+                            <MenuItem onClick={handleMenuClose} component={Link} href="/user">
+                                Profile
+                            </MenuItem>
+                            <MenuItem onClick={handleMenuClose} component={Link} href="/user/settings">
+                                Settings
+                            </MenuItem>
                         </Menu>
                     </div>
                 </DenseToolbar>

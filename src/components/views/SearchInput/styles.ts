@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme: Theme) =>
             alignItems: 'center',
             padding: theme.spacing(1, 0.5),
             borderRadius: theme.spacing(1),
-            textDecoration: 'none !important',
+
             width: '100%',
             '&:hover': {
                 background: theme.palette.grey[100]
@@ -87,7 +87,6 @@ const useStyles = makeStyles((theme: Theme) =>
             padding: theme.spacing(1, 0.5),
             borderRadius: theme.spacing(1),
             width: '100%',
-            textDecoration: 'none !important',
             cursor: 'pointer',
             '&:hover': {
                 background: theme.palette.grey[100]

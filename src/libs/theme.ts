@@ -51,6 +51,9 @@ const theme = createMuiTheme({
                 },
                 '::-moz-focus-inner': {
                     border: 0
+                },
+                a: {
+                    textDecoration: 'none !important'
                 }
             }
         },

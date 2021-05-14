@@ -1,0 +1,16 @@
+import { useRouter } from 'next/router';
+import App from '~components/layouts/App';
+
+function Settings() {
+    const router = useRouter();
+
+    return (
+        <div>
+            <div>{JSON.stringify(router.query)}</div>
+        </div>
+    );
+}
+
+Settings.XLayout = App;
+
+export default Settings;
