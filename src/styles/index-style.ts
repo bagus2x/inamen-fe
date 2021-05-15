@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme: Theme) =>
                 marginTop: theme.spacing(4)
             },
             minHeight: '100vh',
-            background: 'theme.palette.common.white'
+            background: theme.palette.common.white
         },
         mixinDenseToolbar: {
             minHeight: 48
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme: Theme) =>
             alignItems: 'center',
             flexDirection: 'column',
             '& > h1': {
-                color: 'theme.palette.common.white',
+                color: theme.palette.common.white,
                 fontWeight: '400',
                 [theme.breakpoints.down('xs')]: {
                     fontSize: '1rem',

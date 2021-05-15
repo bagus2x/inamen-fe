@@ -79,7 +79,7 @@ const Host: React.FC = ({ children }) => {
                     </div>
                 </DenseToolbar>
             </AppBar>
-            <Drawer open={drawer} onClose={handleDrawerClose}>
+            <Drawer keepMounted open={drawer} onClose={handleDrawerClose}>
                 <div className={classes.list}>
                     <ListItem>
                         <NavbarTitle />

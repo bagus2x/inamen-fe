@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme: Theme) =>
             alignItems: 'center',
             width: '100%',
             padding: theme.spacing(2, 2, 5),
-            color: 'theme.palette.common.white',
+            color: theme.palette.common.white,
             '& a': {
                 color: theme.palette.secondary.main,
                 cursor: 'pointer'
