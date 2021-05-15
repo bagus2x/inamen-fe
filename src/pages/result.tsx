@@ -4,7 +4,7 @@ import Container from '@material-ui/core/Container';
 import useStyles from '~styles/result-style';
 import Button from '@material-ui/core/Button';
 import FilterListIcon from '@material-ui/icons/FilterList';
-import App from '~components/layouts/App';
+import AppLayout from '~components/layouts/App';
 import ListTournaments from '~components/views/ListTournaments';
 
 function Result() {
@@ -27,6 +27,6 @@ function Result() {
     );
 }
 
-Result.XLayout = App;
+Result.XLayout = AppLayout;
 
 export default Result;

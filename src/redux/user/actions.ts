@@ -3,7 +3,7 @@ import { AnyAction } from 'redux';
 import axios from 'axios';
 import { Data, UserAction } from '~redux/user/types';
 import { writeError, Response } from '~redux/common';
-import { API } from '~libs/global-var';
+import { PHP_SERVICE } from '~libs/global-var';
 
 /*Sign In action*/
 
@@ -28,7 +28,7 @@ export const signIn = (req: SignInRequest) => async (dispatch: Dispatch<UserActi
     dispatch({ type: 'USER_SIGNIN_REQUEST' });
 
     try {
-        const res = await axios.post<SignInResponse>(`${API}/api/v1/user/signin`, req);
+        const res = await axios.post<SignInResponse>(`${PHP_SERVICE}/api/v1/user/signin`, req);
         dispatch({ type: 'USER_SIGNIN_SUCCESS', data: res.data.data as Data });
     } catch (err) {
         dispatch({ type: 'USER_SIGNIN_FAIL', error: writeError(err, 'Sign In') });
@@ -49,7 +49,7 @@ export const signUp = (req: SignUpRequest) => async (dispatch: Dispatch<UserActi
     dispatch({ type: 'USER_SIGNUP_REQUEST' });
 
     try {
-        const res = await axios.post<SignUpResponse>(`${API}/api/v1/user/signup`, req);
+        const res = await axios.post<SignUpResponse>(`${PHP_SERVICE}/api/v1/user/signup`, req);
         dispatch({ type: 'USER_SIGNUP_SUCCESS', data: res.data.data as Data });
     } catch (err) {
         dispatch({ type: 'USER_SIGNUP_FAIL', error: writeError(err, 'Sign Up error') });
@@ -71,7 +71,7 @@ export const getUser = (accessToken: string) => async (dispatch: Dispatch<UserAc
     dispatch({ type: 'GET_USER_REQUEST' });
 
     try {
-        const res = await axios.get<GetuserResponse>(`${API}/api/v1/user`, {
+        const res = await axios.get<GetuserResponse>(`${PHP_SERVICE}/api/v1/user`, {
             headers: {
                 Authorization: `Bearer ${accessToken}`
             }

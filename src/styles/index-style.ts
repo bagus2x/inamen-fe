@@ -7,13 +7,13 @@ const useStyles = makeStyles((theme: Theme) =>
                 marginTop: theme.spacing(4)
             },
             minHeight: '100vh',
-            background: '#fff'
+            background: 'theme.palette.common.white'
         },
         mixinDenseToolbar: {
             minHeight: 48
         },
         mainHero: {
-            background: `linear-gradient(180deg, ${theme.palette.primary.main} 80%, #fff 20%)`,
+            background: `linear-gradient(180deg, ${theme.palette.primary.main} 80%, theme.palette.common.white 20%)`,
             userSelect: 'none',
             padding: theme.spacing(4),
             [theme.breakpoints.down('sm')]: {
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme: Theme) =>
             alignItems: 'center',
             flexDirection: 'column',
             '& > h1': {
-                color: '#fff',
+                color: 'theme.palette.common.white',
                 fontWeight: '400',
                 [theme.breakpoints.down('xs')]: {
                     fontSize: '1rem',

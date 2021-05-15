@@ -1,4 +1,4 @@
-import { Theme, withStyles } from '@material-ui/core';
+import { Theme, withStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 
 const Input = withStyles((theme: Theme) => ({

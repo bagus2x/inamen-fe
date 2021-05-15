@@ -90,7 +90,7 @@ const App: React.FC = ({ children }) => {
                         {visibleMobileSearch && <SearchInput mobile onInactive={handleInvsibleMobileSearch} />}
                     </Hidden>
                     <div className={classes.toolbarRight}>
-                        <IconButton size="small" color="primary" component={Link} href="/studio">
+                        <IconButton size="small" color="primary" component={Link} href="/host">
                             <AddIcon />
                         </IconButton>
                         <IconButton size="small" color="primary">
@@ -108,10 +108,10 @@ const App: React.FC = ({ children }) => {
                             open={!!anchorAccount}
                             onClose={handleMenuClose}
                         >
-                            <MenuItem onClick={handleMenuClose} component={Link} href="/user">
+                            <MenuItem onClick={handleMenuClose} component={Link} color="inherit" href="/user">
                                 Profile
                             </MenuItem>
-                            <MenuItem onClick={handleMenuClose} component={Link} href="/user/settings">
+                            <MenuItem onClick={handleMenuClose} component={Link} color="inherit" href="/user/settings">
                                 Settings
                             </MenuItem>
                         </Menu>

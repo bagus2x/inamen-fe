@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import App from '~components/layouts/App';
+import AppLayout from '~components/layouts/App';
 
 function Settings() {
     const router = useRouter();
@@ -11,6 +11,6 @@ function Settings() {
     );
 }
 
-Settings.XLayout = App;
+Settings.XLayout = AppLayout;
 
 export default Settings;

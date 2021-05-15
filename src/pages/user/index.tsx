@@ -1,5 +1,5 @@
 import React from 'react';
-import App from '~components/layouts/App';
+import AppLayout from '~components/layouts/App';
 
 function Index() {
     return (
@@ -9,6 +9,6 @@ function Index() {
     );
 }
 
-Index.XLayout = App;
+Index.XLayout = AppLayout;
 
 export default Index;

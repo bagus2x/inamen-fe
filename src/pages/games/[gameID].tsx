@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import App from '~components/layouts/App';
+import AppLayout from '~components/layouts/App';
 import games from '~libs/dummy/games';
 import useStyles from '~styles/game-detail-style';
 import Button from '@material-ui/core/Button';
@@ -104,7 +104,7 @@ function GameDetail({ game }: GameDetailProps) {
     );
 }
 
-GameDetail.XLayout = App;
+GameDetail.XLayout = AppLayout;
 
 export const getStaticProps: GetStaticProps = async (req) => {
     const game = games.find((game) => game.id === parseInt(req.params?.gameID as string));

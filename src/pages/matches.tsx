@@ -1,13 +1,9 @@
-import App from '~components/layouts/App';
+import AppLayout from '~components/layouts/App';
 
 function Matches() {
-    return (
-        <div>
-            
-        </div>
-    )
+    return <div></div>;
 }
 
-Matches.XLayout = App;
+Matches.XLayout = AppLayout;
 
-export default Matches
+export default Matches;

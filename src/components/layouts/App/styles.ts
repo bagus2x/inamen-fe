@@ -6,14 +6,6 @@ const useStyles = makeStyles((theme: Theme) =>
             display: 'flex',
             flexDirection: 'column'
         },
-        denseToolbar: {
-            paddingLeft: theme.spacing(6),
-            paddingRight: theme.spacing(6),
-            [theme.breakpoints.down('sm')]: {
-                paddingLeft: theme.spacing(1.5),
-                paddingRight: theme.spacing(1.5)
-            }
-        },
         toolbarLeft: {
             flexGrow: 1,
             display: 'flex',
@@ -31,13 +23,9 @@ const useStyles = makeStyles((theme: Theme) =>
             flexGrow: 1,
             display: 'flex',
             justifyContent: 'flex-end',
-            '& > *:not(:last-child)': {
-                marginRight: theme.spacing(3)
-            },
+            gap: theme.spacing(3),
             [theme.breakpoints.down('sm')]: {
-                '& > *:not(:last-child)': {
-                    marginRight: theme.spacing(2)
-                }
+                gap: theme.spacing(2)
             }
         },
         sideNavbar: {

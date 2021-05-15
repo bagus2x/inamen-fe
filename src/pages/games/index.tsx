@@ -4,8 +4,8 @@ import axios from 'axios';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
-import App from '~components/layouts/App';
-import useStyles from 'src/styles/browse-style';
+import AppLayout from '~components/layouts/App';
+import useStyles from 'src/styles/games-style';
 import GameCard from '~components/views/GameCard';
 import games from '~libs/dummy/games';
 
@@ -17,11 +17,11 @@ interface Game {
     genres: Array<string>;
 }
 
-interface BrowseProps {
+interface GamesProps {
     games: Array<Game>;
 }
 
-function Browse({ games }: BrowseProps) {
+function Games({ games }: GamesProps) {
     const classes = useStyles();
     const [filteredGames, setFilteredGames] = useState(games);
 
@@ -124,6 +124,6 @@ export const getStaticProps: GetStaticProps = async () => {
     };
 };
 
-Browse.XLayout = App;
+Games.XLayout = AppLayout;
 
-export default Browse;
+export default Games;

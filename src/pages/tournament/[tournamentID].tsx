@@ -12,7 +12,7 @@ import Fab from '@material-ui/core/Fab';
 import ChatIcon from '@material-ui/icons/ChatRounded';
 import TabPanel from '~components/common/TabPanel/TabPanel';
 import ChatBox from '~components/views/ChatBox';
-import App from '~components/layouts/App';
+import AppLayout from '~components/layouts/App';
 import Tag from '~components/common/Tag';
 import useStyles from '~styles/tournament-style';
 
@@ -27,7 +27,7 @@ function TournamentDetail() {
     const isMdUp = useMediaQuery((theme: Theme) => theme.breakpoints.up('md'));
     const [chatBox, setChatBox] = useState(false);
 
-    const tabValue = router.query.tab;
+    const tabValue = router.query.tab || 'informations';
 
     const handleChatOnOpen = () => {
         setChatBox(true);
@@ -119,6 +119,6 @@ function TournamentDetail() {
     );
 }
 
-TournamentDetail.XLayout = App;
+TournamentDetail.XLayout = AppLayout;
 
 export default TournamentDetail;
