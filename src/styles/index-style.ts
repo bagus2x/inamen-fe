@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) =>
             minHeight: 48
         },
         mainHero: {
-            background: `linear-gradient(180deg, ${theme.palette.primary.main} 80%, theme.palette.common.white 20%)`,
+            background: `linear-gradient(180deg, ${theme.palette.primary.main} 80%, ${theme.palette.common.white} 20%)`,
             userSelect: 'none',
             padding: theme.spacing(4),
             [theme.breakpoints.down('sm')]: {
