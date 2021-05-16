@@ -6,33 +6,33 @@ const useStyles = makeStyles((theme: Theme) =>
             display: 'flex',
             flexDirection: 'column'
         },
-        toolbarLeft: {
-            flexGrow: 1,
-            display: 'flex',
-            justifyContent: 'flex-start',
-            gap: theme.spacing(3)
-        },
-        toolbarRight: {
-            flexGrow: 1,
-            display: 'flex',
-            justifyContent: 'flex-end',
-            gap: theme.spacing(3),
-            [theme.breakpoints.down('sm')]: {
-                gap: theme.spacing(2)
-            }
-        },
         content: {
-            marginTop: 48,
             transition: theme.transitions.create('margin', {
                 duration: theme.transitions.duration.short,
                 easing: theme.transitions.easing.easeIn
-            })
+            }),
+            [theme.breakpoints.up('md')]: {
+                marginLeft: 240
+            }
         },
         grow: {
             flexGrow: 1
         },
         list: {
-            width: 240
+            width: 240,
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column'
+        },
+        title: {
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center'
+        },
+        signOutButton: {
+            display: 'flex',
+            width: '100%',
+            justifyContent: 'center'
         }
     })
 );

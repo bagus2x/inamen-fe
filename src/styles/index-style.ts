@@ -4,7 +4,7 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         landingPage: {
             '& > section': {
-                marginTop: theme.spacing(4)
+                marginTop: theme.spacing(10)
             },
             minHeight: '100vh',
             background: theme.palette.common.white
