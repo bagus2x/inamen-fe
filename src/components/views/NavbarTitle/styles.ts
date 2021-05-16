@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme: Theme) =>
             alignItems: 'center',
             userSelect: 'none',
             cursor: 'pointer',
+            gap: theme.spacing(2),
             '& > h1': {
                 fontSize: '1.5em !important',
                 fontWeight: 400,

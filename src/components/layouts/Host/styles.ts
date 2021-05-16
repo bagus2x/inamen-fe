@@ -22,7 +22,11 @@ const useStyles = makeStyles((theme: Theme) =>
             width: 240,
             height: '100%',
             display: 'flex',
-            flexDirection: 'column'
+            flexDirection: 'column',
+            background: theme.palette.primary.main,
+            '& *': {
+                color: theme.palette.common.white
+            }
         },
         title: {
             width: '100%',
@@ -33,6 +37,11 @@ const useStyles = makeStyles((theme: Theme) =>
             display: 'flex',
             width: '100%',
             justifyContent: 'center'
+        },
+        btnFab: {
+            position: 'fixed',
+            right: theme.spacing(2),
+            bottom: theme.spacing(2)
         }
     })
 );

@@ -14,7 +14,7 @@ function reset() {
             <Navbar />
             <Container maxWidth="sm" className={classes.container}>
                 <div className={classes.title}>
-                    <Image src="/logo/logo.svg" width={100} height={100} />
+                    <Image src="/logo/logo_main.svg" width={100} height={100} />
                     <Typography variant="h1">Reset your password</Typography>
                 </div>
                 <form className={classes.form}>

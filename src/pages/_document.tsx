@@ -10,7 +10,7 @@ export default class MyDocument extends Document {
                 <Head>
                     <meta name="theme-color" content={theme.palette.primary.main} />
                     <link rel="preconnect" href="https://fonts.gstatic.com" />
-                    <link rel="shortcut icon" href="/assets/logo/logo.svg" type="image/x-icon" />
+                    <link rel="shortcut icon" href="/assets/logo/logo_main.svg" type="image/x-icon" />
                     <link
                         rel="stylesheet"
                         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"

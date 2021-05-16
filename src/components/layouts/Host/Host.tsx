@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
+import MenuIcon from '@material-ui/icons/MenuRounded';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -10,6 +11,7 @@ import FlareRoundedIcon from '@material-ui/icons/FlareRounded';
 import PlaylistAddRoundedIcon from '@material-ui/icons/PlaylistAddRounded';
 import ModeCommentRoundedIcon from '@material-ui/icons/ModeCommentRounded';
 import PeopleRoundedIcon from '@material-ui/icons/PeopleRounded';
+import Fab from '@material-ui/core/Fab';
 import SettingsRoundedIcon from '@material-ui/icons/SettingsRounded';
 import TocRoundedIcon from '@material-ui/icons/TocRounded';
 import { Theme } from '@material-ui/core/styles';
@@ -19,24 +21,16 @@ import useStyles from '~components/layouts/Host/styles';
 import Link from '~components/common/Link';
 import NavbarTitle from '~components/views/NavbarTitle';
 import { useRouter } from 'next/router';
+import { Hidden } from '@material-ui/core';
 
 const Host: React.FC = ({ children }) => {
     const classes = useStyles();
     const router = useRouter();
     const height = use100vh();
     const isSmDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
-    const [anchorAccount, setAnchorAccount] = useState<null | HTMLElement>(null);
     const [drawer, setDrawer] = useState(false);
 
     const { tournamentID } = router.query;
-
-    const handleProfileMenuOpen = (ev: React.MouseEvent<HTMLElement>) => {
-        setAnchorAccount(ev.currentTarget);
-    };
-
-    const handleMenuClose = () => {
-        setAnchorAccount(null);
-    };
 
     const handleDrawerOpen = () => {
         setDrawer(true);
@@ -58,7 +52,7 @@ const Host: React.FC = ({ children }) => {
                     <List>
                         <ListItem>
                             <div className={classes.title}>
-                                <NavbarTitle />
+                                <NavbarTitle variant="light" />
                             </div>
                         </ListItem>
                         <ListItem button component={Link} color="inherit" href="/host">
@@ -132,6 +126,17 @@ const Host: React.FC = ({ children }) => {
                 </div>
             </Drawer>
             <main className={classes.content}>{children}</main>
+            <Hidden mdUp>
+                <Fab
+                    size="small"
+                    color="primary"
+                    aria-label="chat"
+                    className={classes.btnFab}
+                    onClick={handleDrawerOpen}
+                >
+                    <MenuIcon />
+                </Fab>
+            </Hidden>
         </div>
     );
 };
