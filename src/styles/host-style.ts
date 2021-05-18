@@ -8,8 +8,8 @@ const useStyles = makeStyles((theme: Theme) =>
         tourCardWrapper: {
             margin: theme.spacing(2, 0),
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
-            gap: theme.spacing(2),
+            gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
+            gap: theme.spacing(4),
             [theme.breakpoints.down('xs')]: {
                 gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))'
             }

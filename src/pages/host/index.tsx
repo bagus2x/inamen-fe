@@ -12,7 +12,11 @@ function Host() {
             <Container maxWidth="lg">
                 <Typography variant="h1">My Tournaments</Typography>
                 <div className={classes.tourCardWrapper}>
-                    <TourCard title="Turnamen Berantem" href="/host/1" image="/assets/game-logo/apex.jpg" />
+                    <TourCard
+                        title="aTurnamen Berantfefefefeffedwdwwdwdwdwdwdwdwdwdwem"
+                        href="/host/1"
+                        image="/assets/game-logo/apex.jpg"
+                    />
                     <TourCard title="Turnamen Damai" href="/host/1" image="/assets/game-logo/apex.jpg" />
                     <TourCard title="Turnamen Sprotif" href="/host/1" image="/assets/game-logo/apex.jpg" />
                     <TourCard title="Turnamen RT" href="/host/1" image="/assets/game-logo/apex.jpg" />

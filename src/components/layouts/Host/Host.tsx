@@ -40,14 +40,18 @@ const Host: React.FC = ({ children }) => {
         setDrawer(false);
     };
 
+    const props: {} = isSmDown
+        ? {
+              keepMounted: true,
+              variant: 'temporary'
+          }
+        : {
+              variant: 'permanent'
+          };
+
     return (
         <div className={classes.root} style={{ height }}>
-            <Drawer
-                variant={isSmDown ? 'temporary' : 'permanent'}
-                keepMounted
-                open={drawer}
-                onClose={handleDrawerClose}
-            >
+            <Drawer open={drawer} onClose={handleDrawerClose} {...props}>
                 <div className={classes.list}>
                     <List>
                         <ListItem>

@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
             marginTop: theme.spacing(1),
             color: 'inherit',
             fontWeight: 500,
-            textOverflow: 'elipsis',
+            textOverflow: 'ellipsis',
             overflow: 'hidden',
             whiteSpace: 'nowrap',
             '&:hover': {

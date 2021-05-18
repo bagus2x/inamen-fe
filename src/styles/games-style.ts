@@ -22,9 +22,10 @@ const useStyles = makeStyles((theme: Theme) =>
             margin: theme.spacing(2, 0),
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-            gap: theme.spacing(2),
+            gap: theme.spacing(4),
             [theme.breakpoints.down('xs')]: {
-                gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))'
+                gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))',
+                gap: theme.spacing(2)
             }
         }
     })
