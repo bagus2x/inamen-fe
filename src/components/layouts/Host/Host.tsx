@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import MenuIcon from '@material-ui/icons/MenuRounded';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
@@ -6,9 +7,10 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ShowChartRoundedIcon from '@material-ui/icons/ShowChartRounded';
+import PlaylistAddRoundedIcon from '@material-ui/icons/PlaylistAddRounded';
 import Divider from '@material-ui/core/Divider';
 import FlareRoundedIcon from '@material-ui/icons/FlareRounded';
-import PlaylistAddRoundedIcon from '@material-ui/icons/PlaylistAddRounded';
+import Hidden from '@material-ui/core/Hidden';
 import ModeCommentRoundedIcon from '@material-ui/icons/ModeCommentRounded';
 import PeopleRoundedIcon from '@material-ui/icons/PeopleRounded';
 import Fab from '@material-ui/core/Fab';
@@ -20,8 +22,6 @@ import use100vh from '~libs/hooks/100vh';
 import useStyles from '~components/layouts/Host/styles';
 import Link from '~components/common/Link';
 import NavbarTitle from '~components/views/NavbarTitle';
-import { useRouter } from 'next/router';
-import { Hidden } from '@material-ui/core';
 
 const Host: React.FC = ({ children }) => {
     const classes = useStyles();

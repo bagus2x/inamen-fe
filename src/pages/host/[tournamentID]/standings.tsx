@@ -4,9 +4,13 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Typography from '@material-ui/core/Typography';
 import ListItemText from '@material-ui/core/ListItemText';
+import IconButton from '@material-ui/core/IconButton';
 import Container from '@material-ui/core/Container';
+import DeleteIcon from '@material-ui/icons/Delete';
 import Divider from '@material-ui/core/Divider';
+import EditIcon from '@material-ui/icons/Edit';
 import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import HostLayout from '~components/layouts/Host';
 import useStyles from '~styles/standings-style';
@@ -32,6 +36,7 @@ function Standings() {
                     <Typography variant="h1">Standings</Typography>
                 </span>
                 <Button
+                    startIcon={<AddIcon />}
                     color="secondary"
                     variant="contained"
                     size="small"
@@ -48,7 +53,15 @@ function Standings() {
                     </ListItem>
                     <Divider />
                     <ListItem button>
-                        <ListItemText primary="babak 2" />
+                        <ListItemText primary="babak 2" secondary="Description..." />
+                        <ListItemSecondaryAction>
+                            <IconButton size="small" color="primary">
+                                <EditIcon fontSize="small" />
+                            </IconButton>
+                            <IconButton size="small" color="primary">
+                                <DeleteIcon fontSize="small" />
+                            </IconButton>
+                        </ListItemSecondaryAction>
                     </ListItem>
                     <Divider />
                     <ListItem button>

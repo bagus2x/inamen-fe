@@ -13,13 +13,16 @@ const useStyles = makeStyles((theme: Theme) =>
             userSelect: 'none'
         },
         header: {
-            position: 'relative',
-            textAlign: 'center'
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            padding: theme.spacing(0, 1.5)
         },
-        btnBack: {
-            position: 'absolute',
-            left: theme.spacing(1.5),
-            transform: 'translateY(-16%)'
+        connected: {
+            color: theme.palette.success.main
+        },
+        disconnected: {
+            color: theme.palette.error.main
         },
         messagesContainer: {
             padding: theme.spacing(0, 1.5),

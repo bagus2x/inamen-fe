@@ -1,12 +1,20 @@
-import { ReactEventHandler, FC } from 'react';
-import IconButton from '@material-ui/core/IconButton';
-import InputBase from '@material-ui/core/InputBase';
-import SendIcon from '@material-ui/icons/SendRounded';
+import { ReactEventHandler, useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
+import Indicator from '@material-ui/icons/FiberManualRecordRounded';
 import ArrowBackIcon from '@material-ui/icons/ArrowBackRounded';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
+import SendIcon from '@material-ui/icons/SendRounded';
+import InputBase from '@material-ui/core/InputBase';
+import Tooltip from '@material-ui/core/Tooltip';
+import Divider from '@material-ui/core/Divider';
+import { useForm } from 'react-hook-form';
+import moment from 'moment';
 import clsx from 'clsx';
 import useStyles from '~components/views/ChatBox/styles';
+import dateToFromNowDaily from '~libs/date-daily';
+import { GO_WS_SERVICE } from '~libs/global-var';
 
 interface ChatBoxProps {
     onClose: ReactEventHandler<{}>;
@@ -14,57 +22,131 @@ interface ChatBoxProps {
     open: boolean;
 }
 
-const ChatBox: FC<ChatBoxProps> = ({ onClose, onOpen, open }) => {
+interface Message {
+    _id: string;
+    sender: string;
+    body: string;
+    createdAt: number;
+}
+
+const ChatBox = ({ onClose, onOpen, open }: ChatBoxProps) => {
     const classes = useStyles();
+    const [connected, setConnected] = useState(false);
+    const router = useRouter();
+    const { tournamentID } = router.query;
+    const [messages, setMessages] = useState<Array<Message>>([]);
+    const [id, setID] = useState('');
+    const ws = useRef<WebSocket>();
+    const messageContainer = useRef<HTMLDivElement>(null);
+
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors, isValid }
+    } = useForm<{ message: string }>();
+
+    const connect = () => {
+        const id = Math.random();
+        setID(id.toString());
+        const conn = new WebSocket(`${GO_WS_SERVICE}/ws/${tournamentID}/${id}`);
+
+        conn.onopen = () => {
+            ws.current = conn;
+            setConnected(true);
+        };
+
+        conn.onerror = () => {
+            setConnected(false);
+            conn.close();
+            // setTimeout(connect, 1000);
+        };
+
+        conn.onclose = () => {
+            setConnected(false);
+        };
+
+        conn.onmessage = (ev: MessageEvent) => {
+            setMessages((prevMessages) => [...prevMessages, JSON.parse(ev.data)]);
+        };
+    };
+
+    useEffect(() => {
+        if (messageContainer.current) {
+            messageContainer.current.scroll({
+                top: messageContainer.current.scrollHeight,
+                left: 0
+            });
+        }
+    }, [messageContainer, messages]);
+
+    useEffect(() => {
+        if (tournamentID) connect();
+        return () => ws.current?.close();
+    }, [tournamentID]);
+
+    const sendMessage = (message: string) => {
+        ws.current?.send(message);
+    };
+
+    const handleSendMessage = handleSubmit((data) => {
+        sendMessage(data.message);
+        reset();
+    });
+
+    const getTime = (epoch: number) => {
+        const dateFromNow = dateToFromNowDaily(epoch);
+        if (dateFromNow === 'Today') return `${dateFromNow}, ${moment.unix(epoch).format('hh:mma')}`;
+        return dateFromNow;
+    };
 
     return (
         <SwipeableDrawer keepMounted open={open} onClose={onClose} onOpen={onOpen} anchor="right">
             <div className={classes.chatBox}>
                 <div className={classes.header}>
-                    <IconButton color="primary" size="small" edge="start" className={classes.btnBack} onClick={onClose}>
+                    <IconButton color="primary" size="small" edge="start" onClick={onClose}>
                         <ArrowBackIcon />
                     </IconButton>
                     <Typography variant="h3">Live Chat</Typography>
+                    <Tooltip
+                        arrow
+                        leaveDelay={1500}
+                        title={connected ? 'Connected' : 'Attempting to connect to the server'}
+                    >
+                        <Indicator fontSize="small" className={connected ? classes.connected : classes.disconnected} />
+                    </Tooltip>
                 </div>
-                <div className={classes.messagesContainer}>
-                    <div className={clsx(classes.message, true ? classes.receiver : classes.sender)}>
-                        <span className={classes.messageInfo}>
-                            <Typography variant="caption">Bagus</Typography>
-                            <Typography variant="caption" color="textSecondary">
-                                07:19am
-                            </Typography>
-                        </span>
-                        <div className={classes.messageWrapper}>
-                            <Typography variant="body2">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis possimus, assumenda
-                                obcaecati error, beatae hic quo ab nihil provident officiis consectetur nisi voluptatum
-                                odit quisquam quas temporibus explicabo porro perferendis atque voluptatem dicta iste
-                                voluptas. Laboriosam sint, laudantium, tempora, in voluptas non laborum possimus
-                                exercitationem impedit nihil distinctio similique voluptatibus?
-                            </Typography>
+                <div className={classes.messagesContainer} ref={messageContainer}>
+                    <Divider />
+                    {messages.map((message, index) => (
+                        <div
+                            key={index}
+                            className={clsx(classes.message, message.sender !== id ? classes.receiver : classes.sender)}
+                        >
+                            <span className={classes.messageInfo}>
+                                <Typography variant="caption">{message.sender}</Typography>
+                                <Typography variant="caption" color="textSecondary">
+                                    {getTime(message.createdAt)}
+                                </Typography>
+                            </span>
+                            <div className={classes.messageWrapper}>
+                                <Typography variant="body2">{message.body}</Typography>
+                            </div>
                         </div>
-                    </div>
-                    <div className={clsx(classes.message, false ? classes.receiver : classes.sender)}>
-                        <span className={classes.messageInfo}>
-                            <Typography variant="caption">Andi</Typography>
-                            <Typography variant="caption" color="textSecondary">
-                                07:23am
-                            </Typography>
-                        </span>
-                        <div className={classes.messageWrapper}>
-                            <Typography variant="body2">
-                                iste voluptas. Laboriosam sint, laudantium, tempora, in voluptas non laborum possimus
-                                exercitationem impedit nihil distinctio similique voluptatibus?
-                            </Typography>
-                        </div>
-                    </div>
+                    ))}
                 </div>
-                <div className={classes.chatInput}>
-                    <InputBase fullWidth placeholder="Send a message" />
-                    <IconButton color="primary" size="small" edge="end">
+                <form className={classes.chatInput} onSubmit={handleSendMessage}>
+                    <InputBase
+                        fullWidth
+                        autoComplete="off"
+                        placeholder="Send a message"
+                        disabled={!connected}
+                        {...register('message', { required: true })}
+                    />
+                    <IconButton disabled={!connected} type="submit" color="primary" size="small" edge="end">
                         <SendIcon />
                     </IconButton>
-                </div>
+                </form>
             </div>
         </SwipeableDrawer>
     );

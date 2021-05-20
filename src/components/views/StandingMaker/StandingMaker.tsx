@@ -1,27 +1,21 @@
-import { ChangeEvent, FocusEventHandler, useEffect, useMemo, useState } from 'react';
+import { ChangeEvent, useMemo, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-import TableIcon from '@material-ui/icons/TableChartRounded';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import useStyles from '~components/views/StandingMaker/styles';
-import useDebounce from '~libs/hooks/debounce';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import { Divider, InputBase } from '@material-ui/core';
 import participants, { Participant } from '~libs/dummy/participants';
-import { Autocomplete } from '@material-ui/lab';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 interface StandingMakerProps {
     open: boolean;
@@ -108,8 +102,10 @@ function StandingMaker({ open, onClose }: StandingMakerProps) {
         // o(n^2), Premature optimization is the root of all evil
         if (schema.data.length) {
             for (let i = 0; i < schema.data.length; i++) {
-                for (let j = 0; j < schema.data[0].length; j++) {
-                    if (data[i][j] !== undefined) data[i][j] = schema.data[i][j];
+                if (data[i] !== undefined) {
+                    for (let j = 0; j < schema.data[0].length; j++) {
+                        if (data[i][j] !== undefined) data[i][j] = schema.data[i][j];
+                    }
                 }
             }
         }
@@ -124,6 +120,16 @@ function StandingMaker({ open, onClose }: StandingMakerProps) {
         return (ev: ChangeEvent<HTMLInputElement>) => {
             const newRow = [...schema.data[i]];
             newRow[j] = ev.target.value;
+            const newRows = [...schema.data];
+            newRows[i] = newRow;
+            setSchema({ ...schema, data: newRows });
+        };
+    };
+
+    const handleAutoCompleteChange = (i: number, j: number) => {
+        return (_ev: any, value: any) => {
+            const newRow = [...schema.data[i]];
+            newRow[j] = value === null ? '' : value.name;
             const newRows = [...schema.data];
             newRows[i] = newRow;
             setSchema({ ...schema, data: newRows });
@@ -188,6 +194,7 @@ function StandingMaker({ open, onClose }: StandingMakerProps) {
                         <Table size="small">
                             <TableHead>
                                 <TableRow>
+                                    <TableCell style={{ width: 50 }}>No.</TableCell>
                                     {schema.columns.map((column, index) => (
                                         <TableCell key={index}>{column}</TableCell>
                                     ))}
@@ -196,19 +203,23 @@ function StandingMaker({ open, onClose }: StandingMakerProps) {
                             <TableBody>
                                 {schema.data.map((rows, i) => (
                                     <TableRow key={i}>
-                                        {rows.map((cell, j) => (
+                                        <TableCell>{i + 1}</TableCell>
+                                        {rows.map((_cell, j) => (
                                             <TableCell key={j}>
                                                 {j === participantNameIndex ? (
                                                     <Autocomplete
                                                         {...autoComplete}
+                                                        onChange={handleAutoCompleteChange(i, j)}
+                                                        freeSolo
                                                         renderInput={(params) => (
                                                             <TextField
                                                                 {...params}
                                                                 ref={params.InputProps.ref}
-                                                                onChange={handleInputChange(i, j)}
                                                                 fullWidth
+                                                                onChange={handleInputChange(i, j)}
                                                                 value={schema.data[i][j]}
                                                                 placeholder="...."
+                                                                style={{ minWidth: 100 }}
                                                                 InputProps={{
                                                                     ...params.InputProps,
                                                                     disableUnderline: true
