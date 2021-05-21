@@ -31,10 +31,8 @@ function Standings() {
 
     return (
         <div className={classes.standings}>
-            <Container maxWidth="lg" className={classes.header}>
-                <span>
-                    <Typography variant="h1">Standings</Typography>
-                </span>
+            <Container className={classes.header}>
+                <Typography variant="h1">Standings</Typography>
                 <Button
                     startIcon={<AddIcon />}
                     color="secondary"
@@ -46,7 +44,7 @@ function Standings() {
                     Create
                 </Button>
             </Container>
-            <Container maxWidth="lg">
+            <Container className={classes.standingsList}>
                 <List>
                     <ListItem button>
                         <ListItemText primary="Babak 1" />

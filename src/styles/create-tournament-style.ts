@@ -10,8 +10,7 @@ const useStyles = makeStyles((theme: Theme) =>
             justifyContent: 'space-between'
         },
         stepper: {
-            background: 'transparent',
-            padding: theme.spacing(4, 0)
+            background: 'transparent'
         },
         stepContent: {
             display: 'flex',
@@ -32,6 +31,9 @@ const useStyles = makeStyles((theme: Theme) =>
             [theme.breakpoints.down('xs')]: {
                 gridTemplateColumns: '1fr'
             }
+        },
+        form: {
+            paddingTop: theme.spacing(2)
         }
     })
 );

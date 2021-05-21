@@ -15,6 +15,7 @@ import clsx from 'clsx';
 import useStyles from '~components/views/ChatBox/styles';
 import dateToFromNowDaily from '~libs/date-daily';
 import { GO_WS_SERVICE } from '~libs/global-var';
+import ChatBoxMessage from '../ChatBoxMessage/ChatBoxMessage';
 
 interface ChatBoxProps {
     onClose: ReactEventHandler<{}>;
@@ -62,10 +63,6 @@ const ChatBox = ({ onClose, onOpen, open }: ChatBoxProps) => {
             // setTimeout(connect, 1000);
         };
 
-        conn.onclose = () => {
-            setConnected(false);
-        };
-
         conn.onmessage = (ev: MessageEvent) => {
             setMessages((prevMessages) => [...prevMessages, JSON.parse(ev.data)]);
         };
@@ -107,7 +104,7 @@ const ChatBox = ({ onClose, onOpen, open }: ChatBoxProps) => {
                     <IconButton color="primary" size="small" edge="start" onClick={onClose}>
                         <ArrowBackIcon />
                     </IconButton>
-                    <Typography variant="h3">Live Chat</Typography>
+                    <Typography variant="h3">Livae aChat</Typography>
                     <Tooltip
                         arrow
                         leaveDelay={1500}
@@ -116,23 +113,16 @@ const ChatBox = ({ onClose, onOpen, open }: ChatBoxProps) => {
                         <Indicator fontSize="small" className={connected ? classes.connected : classes.disconnected} />
                     </Tooltip>
                 </div>
+                <Divider />
                 <div className={classes.messagesContainer} ref={messageContainer}>
-                    <Divider />
                     {messages.map((message, index) => (
-                        <div
+                        <ChatBoxMessage
+                            username={message.sender}
+                            time={message.createdAt}
+                            body={message.body}
+                            type={message.sender !== id ? 'receiver' : 'sender'}
                             key={index}
-                            className={clsx(classes.message, message.sender !== id ? classes.receiver : classes.sender)}
-                        >
-                            <span className={classes.messageInfo}>
-                                <Typography variant="caption">{message.sender}</Typography>
-                                <Typography variant="caption" color="textSecondary">
-                                    {getTime(message.createdAt)}
-                                </Typography>
-                            </span>
-                            <div className={classes.messageWrapper}>
-                                <Typography variant="body2">{message.body}</Typography>
-                            </div>
-                        </div>
+                        />
                     ))}
                 </div>
                 <form className={classes.chatInput} onSubmit={handleSendMessage}>

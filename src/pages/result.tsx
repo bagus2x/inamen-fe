@@ -17,10 +17,10 @@ function Result() {
             <Head>
                 <title>{search_query ? decodeURIComponent(search_query as string) : 'No Result Found'} | Inamen</title>
             </Head>
-            <Container maxWidth="lg" className={classes.containerFilter}>
+            <Container className={classes.containerFilter}>
                 <Button startIcon={<FilterListIcon />}>Filter</Button>
             </Container>
-            <Container maxWidth="lg" className={classes.containerList} disableGutters>
+            <Container className={classes.containerList} disableGutters>
                 <ListTournaments />
             </Container>
         </div>

@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme: Theme) =>
             paddingTop: theme.spacing(2)
         },
         tourCardWrapper: {
-            margin: theme.spacing(2, 0),
+            paddingTop: theme.spacing(2),
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
             gap: theme.spacing(4),

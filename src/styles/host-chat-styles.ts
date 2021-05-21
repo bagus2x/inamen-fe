@@ -2,17 +2,16 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        chatBox: {
-            paddingTop: theme.spacing(1.5),
+        chat: {
+            paddingTop: theme.spacing(2),
+            height: '100%'
+        },
+        chatt: {
             display: 'flex',
             flexDirection: 'column',
             gap: theme.spacing(1),
-            userSelect: 'none',
-            width: 360,
             height: '100%',
-            [theme.breakpoints.down('xs')]: {
-                width: '100vw'
-            }
+            userSelect: 'none'
         },
         header: {
             display: 'flex',
@@ -28,11 +27,41 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         messagesContainer: {
             padding: theme.spacing(0, 1.5),
+            flexGrow: 1,
             display: 'flex',
             flexDirection: 'column',
-            flexGrow: 1,
-            overflowY: 'auto',
-            borderRadius: theme.spacing(1)
+            gap: theme.spacing(1),
+            overflowY: 'auto'
+        },
+        message: {
+            display: 'block',
+            width: '95%',
+            '& *': {
+                wordWrap: 'break-word'
+            }
+        },
+        messageWrapper: {
+            textAlign: 'justify',
+            padding: theme.spacing(1),
+            borderRadius: theme.spacing(1),
+            userSelect: 'text'
+        },
+        messageInfo: {
+            display: 'flex',
+            gap: theme.spacing(1),
+            width: '100%'
+        },
+        sender: {
+            alignSelf: 'flex-end',
+            '& > :last-child': {
+                background: theme.palette.secondary.light
+            }
+        },
+        receiver: {
+            alignSelf: 'flex-start',
+            '& > :last-child': {
+                background: theme.palette.grey[100]
+            }
         },
         chatInput: {
             padding: theme.spacing(1, 1.5),

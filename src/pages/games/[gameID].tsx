@@ -51,7 +51,7 @@ function GameDetail({ game }: GameDetailProps) {
         <div>
             <div className={classes.banner}>
                 <div className={classes.bannerBackground} />
-                <Container maxWidth="lg" className={classes.bannerContainer}>
+                <Container className={classes.bannerContainer}>
                     <Typography variant="h1">{game.title}</Typography>
                     <div className={classes.partiGenre}>
                         <span>
@@ -96,7 +96,7 @@ function GameDetail({ game }: GameDetailProps) {
                     </Box>
                 </Container>
             </div>
-            <Container maxWidth="lg">
+            <Container>
                 <Typography variant="h3">Recomended Tournaments</Typography>
                 <ListTournaments />
             </Container>

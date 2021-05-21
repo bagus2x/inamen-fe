@@ -1,18 +1,18 @@
-import { blue } from '@material-ui/core/colors';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        standings: {
+        matches: {
             paddingTop: theme.spacing(2)
         },
         header: {
             display: 'flex',
             justifyContent: 'space-between'
         },
-        standingsList: {
+        matchesList: {
             paddingTop: theme.spacing(2)
-        }
+        },
+        btnCreate: {}
     })
 );
 

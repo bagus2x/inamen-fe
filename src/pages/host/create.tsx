@@ -33,9 +33,17 @@ interface TournamentFormField {
     title: string;
     description: string;
     game: string;
-    platform: Array<string>;
     mode: string;
     numberOfParticipants: number;
+    platforms: Array<string>;
+    tournamentDates: TournamentDates;
+}
+
+interface TournamentDates {
+    registrationStartDate: number;
+    registrationLastDate: number;
+    tournamentStartDate: number;
+    tournamentLastDate: number;
 }
 
 function Create() {
@@ -61,193 +69,181 @@ function Create() {
 
     return (
         <div className={classes.create}>
-            <Container>
-                <div className={classes.header}>
-                    <Typography variant="h1">Create a tournament</Typography>
-                    <NextLink href="/host/documentation">
-                        <Button color="secondary" component="a" endIcon={<BookIcon />}>
-                            Doc
-                        </Button>
-                    </NextLink>
-                </div>
-                <form onSubmit={handleCreateTournament}>
-                    <Stepper activeStep={activeStep} orientation="vertical" className={classes.stepper}>
-                        <Step>
-                            <StepLabel>Profile</StepLabel>
-                            <StepContent>
-                                <div className={classes.stepContent}>
-                                    <TextField
-                                        size="small"
-                                        fullWidth
-                                        label="Host"
-                                        value="Bagus"
-                                        disabled
-                                        InputLabelProps={{ shrink: true }}
+            <Container className={classes.header}>
+                <Typography variant="h1">Create a tournament</Typography>
+                <NextLink href="/host/documentation">
+                    <Button color="secondary" component="a" endIcon={<BookIcon />}>
+                        Doc
+                    </Button>
+                </NextLink>
+            </Container>
+            <Container component="form" onSubmit={handleCreateTournament} className={classes.form}>
+                <Stepper activeStep={activeStep} orientation="vertical" className={classes.stepper}>
+                    <Step>
+                        <StepLabel>Profile</StepLabel>
+                        <StepContent>
+                            <div className={classes.stepContent}>
+                                <TextField
+                                    size="small"
+                                    fullWidth
+                                    label="Host"
+                                    value="Bagus"
+                                    disabled
+                                    InputLabelProps={{ shrink: true }}
+                                />
+                                <TextField size="small" fullWidth label="Title" InputLabelProps={{ shrink: true }} />
+                                <TextField
+                                    size="small"
+                                    fullWidth
+                                    multiline
+                                    label="Description"
+                                    InputLabelProps={{ shrink: true }}
+                                />
+                                <TextField
+                                    label="Banner"
+                                    disabled
+                                    placeholder="Custom banner is coming soon"
+                                    InputProps={{ startAdornment: <InsertPhotoIcon color="primary" /> }}
+                                />
+                            </div>
+                            <div className={classes.btnAction}>
+                                <Button disableElevation size="small" disabled={activeStep === 0} onClick={handleBack}>
+                                    Back
+                                </Button>
+                                <Button
+                                    disableElevation
+                                    size="small"
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={handleNext}
+                                >
+                                    Next
+                                </Button>
+                            </div>
+                        </StepContent>
+                    </Step>
+                    <Step>
+                        <StepLabel>Event Dates</StepLabel>
+                        <StepContent>
+                            <div className={clsx(classes.stepContent, classes.datePickerWrapper)}>
+                                <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils}>
+                                    <KeyboardDateTimePicker
+                                        variant="inline"
+                                        ampm={false}
+                                        label="Registration Start Date"
+                                        value={selectedDate}
+                                        onChange={() => {}}
+                                        onError={console.log}
+                                        disablePast
+                                        format="yyyy/MM/dd HH:mm"
                                     />
-                                    <TextField
-                                        size="small"
-                                        fullWidth
-                                        label="Title"
-                                        InputLabelProps={{ shrink: true }}
+                                    <KeyboardDateTimePicker
+                                        variant="inline"
+                                        ampm={false}
+                                        label="Registration Last Date"
+                                        value={selectedDate}
+                                        onChange={() => {}}
+                                        onError={console.log}
+                                        disablePast
+                                        format="yyyy/MM/dd HH:mm"
                                     />
-                                    <TextField
-                                        size="small"
-                                        fullWidth
-                                        multiline
-                                        label="Description"
-                                        InputLabelProps={{ shrink: true }}
+                                    <KeyboardDateTimePicker
+                                        variant="inline"
+                                        ampm={false}
+                                        label="Tournament Start Date"
+                                        value={selectedDate}
+                                        onChange={() => {}}
+                                        onError={console.log}
+                                        disablePast
+                                        format="yyyy/MM/dd HH:mm"
                                     />
-                                    <TextField
-                                        label="Banner"
-                                        disabled
-                                        placeholder="Custom banner is coming soon"
-                                        InputProps={{ startAdornment: <InsertPhotoIcon color="primary" /> }}
+                                    <KeyboardDateTimePicker
+                                        variant="inline"
+                                        ampm={false}
+                                        label="Tournament Last Date"
+                                        value={selectedDate}
+                                        onChange={() => {}}
+                                        onError={console.log}
+                                        disablePast
+                                        format="yyyy/MM/dd HH:mm"
                                     />
-                                </div>
-                                <div className={classes.btnAction}>
-                                    <Button
-                                        disableElevation
-                                        size="small"
-                                        disabled={activeStep === 0}
-                                        onClick={handleBack}
-                                    >
-                                        Back
-                                    </Button>
-                                    <Button
-                                        disableElevation
-                                        size="small"
-                                        variant="contained"
-                                        color="primary"
-                                        onClick={handleNext}
-                                    >
-                                        Next
-                                    </Button>
-                                </div>
-                            </StepContent>
-                        </Step>
-                        <Step>
-                            <StepLabel>Event Dates</StepLabel>
-                            <StepContent>
-                                <div className={clsx(classes.stepContent, classes.datePickerWrapper)}>
-                                    <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils}>
-                                        <KeyboardDateTimePicker
-                                            variant="inline"
-                                            ampm={false}
-                                            label="Registration Start Date"
-                                            value={selectedDate}
-                                            onChange={() => {}}
-                                            onError={console.log}
-                                            disablePast
-                                            format="yyyy/MM/dd HH:mm"
-                                        />
-                                        <KeyboardDateTimePicker
-                                            variant="inline"
-                                            ampm={false}
-                                            label="Registration End Date"
-                                            value={selectedDate}
-                                            onChange={() => {}}
-                                            onError={console.log}
-                                            disablePast
-                                            format="yyyy/MM/dd HH:mm"
-                                        />
-                                        <KeyboardDateTimePicker
-                                            variant="inline"
-                                            ampm={false}
-                                            label="Tournament Start Date"
-                                            value={selectedDate}
-                                            onChange={() => {}}
-                                            onError={console.log}
-                                            disablePast
-                                            format="yyyy/MM/dd HH:mm"
-                                        />
-                                        <KeyboardDateTimePicker
-                                            variant="inline"
-                                            ampm={false}
-                                            label="Tournament End Date"
-                                            value={selectedDate}
-                                            onChange={() => {}}
-                                            onError={console.log}
-                                            disablePast
-                                            format="yyyy/MM/dd HH:mm"
-                                        />
-                                    </MuiPickersUtilsProvider>
-                                </div>
-                                <div className={classes.btnAction}>
-                                    <Button disableElevation size="small" onClick={handleBack}>
-                                        Back
-                                    </Button>
-                                    <Button
-                                        disableElevation
-                                        size="small"
-                                        variant="contained"
-                                        color="primary"
-                                        onClick={handleNext}
-                                    >
-                                        Next
-                                    </Button>
-                                </div>
-                            </StepContent>
-                        </Step>
-                        <Step>
-                            <StepLabel>Settings</StepLabel>
-                            <StepContent>
-                                <div className={classes.stepContent}>
-                                    <FormControl>
-                                        <InputLabel shrink id="game-option">
-                                            Game
-                                        </InputLabel>
-                                        <Select labelId="game-option">
-                                            <MenuItem value={10}>Apex</MenuItem>
-                                            <MenuItem value={20}>COD</MenuItem>
-                                            <MenuItem value={30}>Hago</MenuItem>
-                                        </Select>
-                                    </FormControl>
-                                    <FormControl>
-                                        <InputLabel shrink id="game-option">
-                                            Platform
-                                        </InputLabel>
-                                        <Select labelId="game-option">
-                                            <MenuItem value={10}>Apex</MenuItem>
-                                            <MenuItem value={20}>COD</MenuItem>
-                                            <MenuItem value={30}>Hago</MenuItem>
-                                        </Select>
-                                    </FormControl>
-                                    <TextField
-                                        size="small"
-                                        fullWidth
-                                        label="Number of participants"
-                                        type="number"
-                                        InputLabelProps={{ shrink: true }}
-                                    />
-                                    <FormControl component="fieldset">
-                                        <FormLabel className={classes.radioInput} component="span">
-                                            Presence
-                                        </FormLabel>
-                                        <RadioGroup aria-label="quiz" name="quiz">
-                                            <FormControlLabel value="Online" control={<Radio />} label="Online" />
-                                            <FormControlLabel value="Offline" control={<Radio />} label="Offline" />
-                                        </RadioGroup>
-                                        <FormHelperText> Hehe </FormHelperText>
-                                    </FormControl>
-                                </div>
-                                <div className={classes.btnAction}>
-                                    <Button disableElevation size="small" onClick={handleBack}>
-                                        Back
-                                    </Button>
-                                    <Button
-                                        disableElevation
-                                        size="small"
-                                        variant="contained"
-                                        color="primary"
-                                        onClick={handleCreateTournament}
-                                    >
-                                        Create
-                                    </Button>
-                                </div>
-                            </StepContent>
-                        </Step>
-                    </Stepper>
-                </form>
+                                </MuiPickersUtilsProvider>
+                            </div>
+                            <div className={classes.btnAction}>
+                                <Button disableElevation size="small" onClick={handleBack}>
+                                    Back
+                                </Button>
+                                <Button
+                                    disableElevation
+                                    size="small"
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={handleNext}
+                                >
+                                    Next
+                                </Button>
+                            </div>
+                        </StepContent>
+                    </Step>
+                    <Step>
+                        <StepLabel>Settings</StepLabel>
+                        <StepContent>
+                            <div className={classes.stepContent}>
+                                <FormControl>
+                                    <InputLabel shrink id="game-option">
+                                        Game
+                                    </InputLabel>
+                                    <Select labelId="game-option">
+                                        <MenuItem value={10}>Apex</MenuItem>
+                                        <MenuItem value={20}>COD</MenuItem>
+                                        <MenuItem value={30}>Hago</MenuItem>
+                                    </Select>
+                                </FormControl>
+                                <FormControl>
+                                    <InputLabel shrink id="game-option">
+                                        Platform
+                                    </InputLabel>
+                                    <Select labelId="game-option">
+                                        <MenuItem value={10}>Apex</MenuItem>
+                                        <MenuItem value={20}>COD</MenuItem>
+                                        <MenuItem value={30}>Hago</MenuItem>
+                                    </Select>
+                                </FormControl>
+                                <TextField
+                                    size="small"
+                                    fullWidth
+                                    label="Number of participants"
+                                    type="number"
+                                    InputLabelProps={{ shrink: true }}
+                                />
+                                <FormControl component="fieldset">
+                                    <FormLabel className={classes.radioInput} component="span">
+                                        Presence
+                                    </FormLabel>
+                                    <RadioGroup aria-label="quiz" name="quiz">
+                                        <FormControlLabel value="Online" control={<Radio />} label="Online" />
+                                        <FormControlLabel value="Offline" control={<Radio />} label="Offline" />
+                                    </RadioGroup>
+                                    <FormHelperText> Hehe </FormHelperText>
+                                </FormControl>
+                            </div>
+                            <div className={classes.btnAction}>
+                                <Button disableElevation size="small" onClick={handleBack}>
+                                    Back
+                                </Button>
+                                <Button
+                                    disableElevation
+                                    size="small"
+                                    variant="contained"
+                                    color="secondary"
+                                    onClick={handleCreateTournament}
+                                >
+                                    Save
+                                </Button>
+                            </div>
+                        </StepContent>
+                    </Step>
+                </Stepper>
             </Container>
         </div>
     );

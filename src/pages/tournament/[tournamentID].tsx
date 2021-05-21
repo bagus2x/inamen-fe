@@ -49,7 +49,7 @@ function TournamentDetail() {
     return (
         <div className={classes.tournament}>
             <div className={classes.banner}>
-                <Container maxWidth="lg" className={classes.bannerContainer}>
+                <Container className={classes.bannerContainer}>
                     <div className={classes.imageWrapper}>
                         <img className={classes.image} src="/assets/game-logo/apex.jpg" width={180} height={180} />
                     </div>
@@ -74,7 +74,7 @@ function TournamentDetail() {
                     </div>
                 </Container>
             </div>
-            <Container maxWidth="lg">
+            <Container>
                 <Tabs
                     value={tabValue}
                     indicatorColor="primary"

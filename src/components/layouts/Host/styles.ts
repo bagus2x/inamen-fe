@@ -7,6 +7,8 @@ const useStyles = makeStyles((theme: Theme) =>
             flexDirection: 'column'
         },
         content: {
+            height: '100%',
+            overflow: 'auto',
             transition: theme.transitions.create('margin', {
                 duration: theme.transitions.duration.short,
                 easing: theme.transitions.easing.easeIn

@@ -35,7 +35,7 @@ function Games({ games }: GamesProps) {
 
     return (
         <div>
-            <Container maxWidth="lg" className={classes.container}>
+            <Container className={classes.container}>
                 {filteredGames.length === games.length ? (
                     <>
                         <Typography variant="h1">Genres</Typography>

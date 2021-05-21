@@ -44,32 +44,30 @@ function Host() {
 
     return (
         <div className={classes.host}>
-            <Container maxWidth="lg">
-                <div className={classes.header}>
-                    <Typography variant="h1">My Tournaments</Typography>
-                    <Button
-                        startIcon={<AddIcon />}
-                        variant="contained"
-                        color="default"
-                        disableElevation
-                        className={classes.btnCreate}
-                        onClick={handleOpenNewTournamentDialog}
-                    >
-                        Create
-                    </Button>
-                </div>
-                <div className={classes.tourCardWrapper}>
-                    <TourCard
-                        title="aTurnamen Berantfefefefeffedwdwwdwdwdwdwdwdwdwdwem"
-                        href="/host/1"
-                        image="/assets/game-logo/apex.jpg"
-                    />
-                    <TourCard title="Turnamen Damai" href="/host/1" image="/assets/game-logo/apex.jpg" />
-                    <TourCard title="Turnamen Sprotif" href="/host/1" image="/assets/game-logo/apex.jpg" />
-                    <TourCard title="Turnamen RT" href="/host/1" image="/assets/game-logo/apex.jpg" />
-                    <TourCard title="Turnamen RW" href="/host/1" image="/assets/game-logo/apex.jpg" />
-                    <TourCard title="Turnamen Kecamatan" href="/host/1" image="/assets/game-logo/apex.jpg" />
-                </div>
+            <Container className={classes.header}>
+                <Typography variant="h1">My Tournaments</Typography>
+                <Button
+                    startIcon={<AddIcon />}
+                    variant="contained"
+                    color="default"
+                    disableElevation
+                    className={classes.btnCreate}
+                    onClick={handleOpenNewTournamentDialog}
+                >
+                    Create
+                </Button>
+            </Container>
+            <Container className={classes.tourCardWrapper}>
+                <TourCard
+                    title="aTurnamen Berantfefefefeffedwdwwdwdwdwdwdwdwdwdwem"
+                    href="/host/1"
+                    image="/assets/game-logo/apex.jpg"
+                />
+                <TourCard title="Turnamen Damai" href="/host/1" image="/assets/game-logo/apex.jpg" />
+                <TourCard title="Turnamen Sprotif" href="/host/1" image="/assets/game-logo/apex.jpg" />
+                <TourCard title="Turnamen RT" href="/host/1" image="/assets/game-logo/apex.jpg" />
+                <TourCard title="Turnamen RW" href="/host/1" image="/assets/game-logo/apex.jpg" />
+                <TourCard title="Turnamen Kecamatan" href="/host/1" image="/assets/game-logo/apex.jpg" />
             </Container>
             <Dialog maxWidth="xs" fullWidth open={newTournamentDialog} onClose={handleCloseNewTournamentDialog}>
                 <form onSubmit={handleNewTournament}>
